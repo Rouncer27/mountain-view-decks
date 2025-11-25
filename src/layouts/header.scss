@@ -1,0 +1,71 @@
+@use "../styles/abstracts/" as *;
+
+.main-header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 99999999999;
+
+  &-wrapper {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  &-logo {
+    position: relative;
+    width: 16.2rem;
+    height: 17.7rem;
+    padding: 0;
+    margin-bottom: 2.5rem;
+    overflow: hidden;
+
+    @media (min-width: 1025px) {
+      width: 16.2rem;
+      height: 17.7rem;
+    }
+
+    @media (min-width: 1150px) {
+      width: 16.2rem;
+      height: 17.7rem;
+    }
+
+    @media (min-width: 1250px) {
+      width: 16.2rem;
+      height: 17.7rem;
+    }
+
+    a {
+      display: block;
+      margin: auto;
+    }
+
+    h1 {
+      margin: 0;
+
+      span {
+        position: absolute;
+        left: -999%;
+      }
+    }
+  }
+
+  &-navigation {
+    display: none;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+
+    @media (min-width: 768px) {
+      display: flex;
+      width: calc(100% - 16.2rem);
+    }
+  }
+
+  &-mobile {
+    display: block;
+
+    @media (min-width: 769px) {
+      display: none;
+    }
+  }
+}

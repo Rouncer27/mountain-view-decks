@@ -1,0 +1,68 @@
+---
+import Button from "../../Button.astro";
+import "./heroIntro.scss";
+import { Image } from "astro:assets";
+
+const {
+  title,
+  content,
+  buttonRequired,
+  buttonOneText,
+  buttonOneLink,
+  buttonTwoRequired,
+  buttonTwoText,
+  buttonTwoLink,
+  image,
+} = Astro.props.data;
+
+const heroImageSrc = image?.node?.sourceUrl;
+const heroAlt = image?.node?.altText || "";
+---
+
+<div class="hero-intro">
+  <div class="hero-intro-content">
+    <div class="hero-intro-content-wrap">
+      <div class="hero-intro-content-title">
+        <h2 set:html={title} />
+      </div>
+      <div class="hero-intro-content-paragraph" set:html={content} />
+
+      {
+        buttonRequired && (
+          <div class="hero-intro-content-buttons">
+            <Button
+              classes="hero-intro-content-buttons-one"
+              ele={"a"}
+              href={buttonOneLink.edges[0].node.uri}
+            >
+              {buttonOneText}
+            </Button>
+            {buttonTwoRequired && (
+              <Button
+                classes="hero-intro-content-buttons-two"
+                btnstyle="two"
+                ele={"a"}
+                href={buttonTwoLink.edges[0].node.uri}
+              >
+                {buttonTwoText}
+              </Button>
+            )}
+          </div>
+        )
+      }
+    </div>
+  </div>
+  <div class="hero-intro-background">
+    <Image
+      src={heroImageSrc}
+      alt={heroAlt}
+      format="webp"
+      widths={[800, 1200, 1600, 2000]}
+      sizes="100vw"
+      loading="eager"
+      inferSize={true}
+      class="hero-intro-background-img"
+    />
+  </div>
+  <div class="hero-intro-overlay"></div>
+</div>

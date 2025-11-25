@@ -1,7 +1,97 @@
 ---
+// @ts-ignore
+import Button from "../../shared/Button.astro";
+import Wrapper from "../../shared/Wrapper.astro";
 import "./aboutIntro.scss";
+
+import { Image } from "astro:assets";
+
+const {
+  title,
+  subTitle,
+  content,
+  stats,
+  buttonText,
+  buttonLink,
+  imageOne,
+  imageTwo,
+  imageTall,
+  quote,
+} = Astro.props.data;
+
+const imageOneSrc = imageOne?.node?.sourceUrl;
+const imageOneAlt = imageOne?.node?.altText || "";
+const imageTwoSrc = imageTwo?.node?.sourceUrl;
+const imageTwoAlt = imageTwo?.node?.altText || "";
+const imageTallSrc = imageTall?.node?.sourceUrl;
+const imageTallAlt = imageTall?.node?.altText || "";
 ---
 
-<section>
-  <div><h1>About Intro</h1></div>
+<section class="about-intro">
+  <Wrapper classes="about-intro-wrapper">
+    <div class="about-intro-content">
+      <div class="about-intro-content-title">
+        <h1>{title}</h1>
+        <h2 set:html={subTitle} />
+      </div>
+      <div class="about-intro-content-intro" set:html={content} />
+      <div class="about-intro-content-stats">
+        {
+          stats.map((stat) => {
+            return (
+              <div>
+                <p>{stat.number}</p>
+                <p>{stat.stat}</p>
+              </div>
+            );
+          })
+        }
+      </div>
+      <div class="about-intro-content-link">
+        <Button ele="a" href={buttonLink.edges[0].node.uri}>{buttonText}</Button
+        >
+      </div>
+    </div>
+    <div class="about-intro-images">
+      <div class="about-intro-images-image image-one">
+        <Image
+          src={imageOneSrc}
+          alt={imageOneAlt}
+          format="webp"
+          widths={[800, 1200, 1600, 2000]}
+          sizes="100vw"
+          loading="eager"
+          inferSize={true}
+          class=""
+        />
+      </div>
+      <div class="about-intro-images-image image-two">
+        <Image
+          src={imageTwoSrc}
+          alt={imageTwoAlt}
+          format="webp"
+          widths={[800, 1200, 1600, 2000]}
+          sizes="100vw"
+          loading="eager"
+          inferSize={true}
+          class=""
+        />
+      </div>
+      <div class="about-intro-images-image image-tall">
+        <Image
+          src={imageTallSrc}
+          alt={imageTallAlt}
+          format="webp"
+          widths={[800, 1200, 1600, 2000]}
+          sizes="100vw"
+          loading="eager"
+          inferSize={true}
+          class=""
+        />
+      </div>
+    </div>
+    <div class="about-intro-quote">
+      <div set:html={quote} />
+    </div>
+  </Wrapper>
 </section>

@@ -13,26 +13,26 @@
 
 .hl-one {
   @extend .headline-all;
-  @include utils.font-sizer(5, 8, 76.8, 150, 4);
-  line-height: 1.13;
+  @include utils.font-sizer(3.5, 5.5, 76.8, 150, 3.2);
+  line-height: 1.18;
 }
 
 .hl-two {
   @extend .headline-all;
-  @include utils.font-sizer(4.5, 6.5, 76.8, 150, 3.5);
-  line-height: 1.23;
+  @include utils.font-sizer(3, 4.5, 76.8, 150, 2.6);
+  line-height: 1.22;
 }
 
 .hl-three {
   @extend .headline-all;
-  @include utils.font-sizer(3, 4, 76.8, 150, 3);
+  @include utils.font-sizer(2.5, 3.5, 76.8, 150, 2.2);
   font-family: abstracts.$primaryFont;
-  line-height: 1.13;
+  line-height: 1.31;
 }
 
 .hl-four {
   @extend .headline-all;
-  @include utils.font-sizer(2.6, 3, 76.8, 150, 2.4);
+  @include utils.font-sizer(2.6, 3, 76.8, 150, 2);
   font-family: abstracts.$primaryFont;
   line-height: 1.2;
 }

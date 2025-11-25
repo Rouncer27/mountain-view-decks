@@ -1,4 +1,7 @@
 ---
+import Headline from "../components/shared/Headline.astro";
+import Paragraph from "../components/shared/Paragraph.astro";
+import Wrapper from "../components/shared/Wrapper.astro";
 import Layout from "../layouts/Layout.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
@@ -6,5 +9,42 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <h1>Home Page</h1>
+  <div>
+    <Wrapper>
+      <div>
+        <Headline ele="h1" hlstyle="one"
+          >Aliquam tincidunt mauris eu risus.</Headline
+        >
+        <Headline ele="h1" hlstyle="two"
+          >Aliquam tincidunt mauris eu risus.</Headline
+        >
+        <Headline ele="h1" hlstyle="three"
+          >Aliquam tincidunt mauris eu risus.</Headline
+        >
+      </div>
+      <div>
+        <Paragraph ele="p" pstyle="one"
+          >Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus
+          hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet
+          vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin
+          laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor
+          eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.</Paragraph
+        >
+        <Paragraph ele="p" pstyle="two"
+          >Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus
+          hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet
+          vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin
+          laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor
+          eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.</Paragraph
+        >
+        <Paragraph ele="p" pstyle="three"
+          >Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus
+          hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet
+          vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin
+          laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor
+          eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.</Paragraph
+        >
+      </div>
+    </Wrapper>
+  </div>
 </Layout>

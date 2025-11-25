@@ -9,6 +9,12 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fontsource/montserrat": "^5.2.8",
     "astro": "^5.16.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "sass": "^1.94.2"
   }
 }

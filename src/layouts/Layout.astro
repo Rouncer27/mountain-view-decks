@@ -1,22 +1,57 @@
+---
+// 1️⃣ Imports
+// Import Components
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+// Import Fonts
+import "@fontsource/montserrat/400.css";
+import "@fontsource/montserrat/600.css";
+// Import Global Styles
+import "../styles/styles.scss";
+// Import data
+import { baseData } from "../data/siteData";
+// What SEO data was passed via Astro.props
+const {
+  metaImg = null,
+  metaTitle = null,
+  metaDescription = null,
+} = Astro.props;
+// 2️⃣ SEO fallback data
+const title = metaTitle ? metaTitle : baseData.title;
+const description = metaDescription ? metaDescription : baseData.description;
+const imgSrc = metaImg ? metaImg : baseData.siteImg;
+const baseUrl = Astro.url ? Astro.url : baseData.url;
+// 3️⃣ Schema.org data (Organization)
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: baseData.organizationName || baseData.title,
+  url: baseData.url,
+  logo: baseData.logoUrl, // 👈 Store this in baseData.js for reusability
+  sameAs: baseData.socialProfiles || [], // optional: Twitter, Facebook, etc.
+};
+const jsonLd = JSON.stringify(schema);
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <meta name="generator" content={Astro.generator} />
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="image" content={imgSrc} />
+    <link rel="canonical" href={baseUrl} />
+    <!-- <link rel="sitemap" href="/sitemap-index.xml" /> -->
+    <script type="application/ld+json" is:inline set:html={jsonLd} />
+  </head>
+  <body>
+    <Header />
+    <slot />
+    <Footer />
+  </body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

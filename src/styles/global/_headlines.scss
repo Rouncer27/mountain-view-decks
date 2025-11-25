@@ -1,0 +1,38 @@
+@use "../abstracts";
+@use "../utils";
+
+.headline-all {
+  color: abstracts.$blackColor;
+  font-family: abstracts.$secondaryFont;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  line-height: 1.26;
+}
+
+.hl-one {
+  @extend .headline-all;
+  @include utils.font-sizer(5, 8, 76.8, 150, 4);
+  line-height: 1.13;
+}
+
+.hl-two {
+  @extend .headline-all;
+  @include utils.font-sizer(4.5, 6.5, 76.8, 150, 3.5);
+  line-height: 1.23;
+}
+
+.hl-three {
+  @extend .headline-all;
+  @include utils.font-sizer(3, 4, 76.8, 150, 3);
+  font-family: abstracts.$primaryFont;
+  line-height: 1.13;
+}
+
+.hl-four {
+  @extend .headline-all;
+  @include utils.font-sizer(2.6, 3, 76.8, 150, 2.4);
+  font-family: abstracts.$primaryFont;
+  line-height: 1.2;
+}

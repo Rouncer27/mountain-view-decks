@@ -31,15 +31,15 @@ const imageTallAlt = imageTall?.node?.altText || "";
   <Wrapper classes="about-intro-wrapper">
     <div class="about-intro-content">
       <div class="about-intro-content-title">
-        <h1>{title}</h1>
-        <h2 set:html={subTitle} />
+        <h2>{title}</h2>
+        <h3 set:html={subTitle} />
       </div>
       <div class="about-intro-content-intro" set:html={content} />
       <div class="about-intro-content-stats">
         {
           stats.map((stat) => {
             return (
-              <div>
+              <div class="about-intro-content-stats-stat">
                 <p>{stat.number}</p>
                 <p>{stat.stat}</p>
               </div>

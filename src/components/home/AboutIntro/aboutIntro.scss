@@ -3,5 +3,79 @@
 @use "../../../styles/global/paragraphs";
 
 .about-intro {
+  padding: 4rem 0;
   background-color: #a77c46;
+
+  &-content {
+    width: calc(50% - 5rem);
+    margin-right: 5rem;
+
+    &-title {
+      width: 100%;
+
+      h2 {
+        @extend .p-two;
+        color: $whiteColor;
+        text-transform: uppercase;
+      }
+
+      h3 {
+        @extend .hl-two;
+        color: $whiteColor;
+      }
+    }
+
+    &-intro {
+      width: 100%;
+
+      p {
+        @extend .p-two;
+        color: $whiteColor;
+      }
+    }
+
+    &-stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      margin-bottom: 2.5rem;
+
+      &-stat {
+        width: calc((100% / 3) - 3rem);
+        margin: 2rem 1.5rem;
+
+        &:first-of-type {
+          margin-right: 3rem;
+          margin-left: 0;
+        }
+
+        &:last-of-type {
+          margin-right: 0;
+          margin-left: 3rem;
+        }
+      }
+
+      p:first-of-type {
+        @extend .hl-one;
+        margin: 0;
+        color: $whiteColor;
+        font-weight: 600;
+      }
+
+      p:last-of-type {
+        @extend .p-one;
+        margin: 0;
+        color: $whiteColor;
+      }
+    }
+  }
+
+  &-images {
+    width: calc(50%);
+  }
+
+  &-quote {
+    width: calc(100%);
+  }
 }

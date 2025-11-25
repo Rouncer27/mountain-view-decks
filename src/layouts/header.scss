@@ -14,25 +14,21 @@
 
   &-logo {
     position: relative;
-    width: 16.2rem;
-    height: 17.7rem;
+    width: 18rem;
     padding: 0;
+    margin-top: 1rem;
     margin-bottom: 2.5rem;
     overflow: hidden;
 
     @media (min-width: 1025px) {
-      width: 16.2rem;
-      height: 17.7rem;
+      width: 18rem;
     }
 
     @media (min-width: 1150px) {
-      width: 16.2rem;
-      height: 17.7rem;
     }
 
     @media (min-width: 1250px) {
-      width: 16.2rem;
-      height: 17.7rem;
+      width: 18rem;
     }
 
     a {
@@ -53,11 +49,11 @@
   &-navigation {
     display: none;
     flex-wrap: wrap;
-    justify-content: flex-end;
+    justify-content: center;
 
     @media (min-width: 768px) {
       display: flex;
-      width: calc(100% - 16.2rem);
+      width: calc(100%);
     }
   }
 

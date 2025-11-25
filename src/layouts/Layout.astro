@@ -47,6 +47,25 @@ const jsonLd = JSON.stringify(schema);
     <meta name="image" content={imgSrc} />
     <link rel="canonical" href={baseUrl} />
     <!-- <link rel="sitemap" href="/sitemap-index.xml" /> -->
+    <!-- OpenGraph Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={baseUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={imgSrc} />
+    <meta property="og:image:alt" content={description} />
+    <meta property="og:site_name" content={title} />
+    <meta property="og:locale" content={`en_US`} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={baseUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imgSrc} />
+    <meta name="twitter:image:alt" content={description} />
+    <meta name="twitter:creator" content={"Mountain View Sun Decks"} />
+
     <script type="application/ld+json" is:inline set:html={jsonLd} />
   </head>
   <body>

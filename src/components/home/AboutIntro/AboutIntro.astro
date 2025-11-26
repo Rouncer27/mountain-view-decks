@@ -53,41 +53,45 @@ const imageTallAlt = imageTall?.node?.altText || "";
       </div>
     </div>
     <div class="about-intro-images">
-      <div class="about-intro-images-image image-one">
-        <Image
-          src={imageOneSrc}
-          alt={imageOneAlt}
-          format="webp"
-          widths={[800, 1200, 1600, 2000]}
-          sizes="100vw"
-          loading="eager"
-          inferSize={true}
-          class=""
-        />
+      <div class="about-intro-images-left">
+        <div class="about-intro-images-image image-one">
+          <Image
+            src={imageOneSrc}
+            alt={imageOneAlt}
+            format="webp"
+            widths={[800, 1200, 1600, 2000]}
+            sizes="100vw"
+            loading="eager"
+            inferSize={true}
+            class=""
+          />
+        </div>
+        <div class="about-intro-images-image image-two">
+          <Image
+            src={imageTwoSrc}
+            alt={imageTwoAlt}
+            format="webp"
+            widths={[800, 1200, 1600, 2000]}
+            sizes="100vw"
+            loading="eager"
+            inferSize={true}
+            class=""
+          />
+        </div>
       </div>
-      <div class="about-intro-images-image image-two">
-        <Image
-          src={imageTwoSrc}
-          alt={imageTwoAlt}
-          format="webp"
-          widths={[800, 1200, 1600, 2000]}
-          sizes="100vw"
-          loading="eager"
-          inferSize={true}
-          class=""
-        />
-      </div>
-      <div class="about-intro-images-image image-tall">
-        <Image
-          src={imageTallSrc}
-          alt={imageTallAlt}
-          format="webp"
-          widths={[800, 1200, 1600, 2000]}
-          sizes="100vw"
-          loading="eager"
-          inferSize={true}
-          class=""
-        />
+      <div class="about-intro-images-right">
+        <div class="about-intro-images-image image-tall">
+          <Image
+            src={imageTallSrc}
+            alt={imageTallAlt}
+            format="webp"
+            widths={[800, 1200, 1600, 2000]}
+            sizes="100vw"
+            loading="eager"
+            inferSize={true}
+            class=""
+          />
+        </div>
       </div>
     </div>
     <div class="about-intro-quote">

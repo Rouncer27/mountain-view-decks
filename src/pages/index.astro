@@ -3,9 +3,10 @@ import Layout from "../layouts/Layout.astro";
 
 import HeroIntro from "../components/shared/PageComponents/HeroIntro/HeroIntro.astro";
 import AboutIntro from "../components/home/AboutIntro/AboutIntro.astro";
+import ServicesList from "../components/shared/PageComponents/ServicesList/ServicesList.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
-import { Hero_Intro_Query } from "../data/shared/queries";
+import { Hero_Intro_Query, Servcies_List_Query } from "../data/shared/queries";
 import { About_Intro_Query } from "../data/home/queries";
 
 const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
@@ -21,6 +22,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
         homePage {
           ${Hero_Intro_Query}
           ${About_Intro_Query}
+          ${Servcies_List_Query}
         }
 			}
 		}
@@ -42,4 +44,5 @@ const {
 >
   <HeroIntro data={homePage.heroIntro} />
   <AboutIntro data={homePage.aboutIntro} />
+  <ServicesList data={homePage.servicesList} />
 </Layout>

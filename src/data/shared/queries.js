@@ -32,3 +32,40 @@ export const Hero_Intro_Query = `
         }
     }
 `;
+
+export const Servcies_List_Query = `
+   	 servicesList: servicesListComponent {
+        title
+        subTitle
+        buttonText
+        buttonLink {
+            edges {
+                node {
+                    uri
+                }
+            }
+        }
+        services {
+            title
+            content
+            buttonLink {
+                edges {
+                    node {
+                        uri
+                    }
+                }
+            }
+
+            image {
+                node {
+                    sourceUrl
+                    altText
+                    mediaDetails {
+                        width
+                        height
+                    }
+                }
+            }
+        }  
+    }
+`;

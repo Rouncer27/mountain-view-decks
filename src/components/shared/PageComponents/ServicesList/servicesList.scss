@@ -4,6 +4,7 @@
 
 .services-list {
   padding: 6rem 0;
+  background-color: #efebe5;
 
   &-intro {
     width: calc(100%);
@@ -38,6 +39,8 @@
       max-width: 60rem;
       padding: 2.5rem 3.5rem;
       background-color: $whiteColor;
+      box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16);
+
       z-index: 10;
 
       &-link {
@@ -47,10 +50,14 @@
 
       h2 {
         @extend .hl-three;
+        margin: 0;
+        margin-bottom: 1.4rem;
       }
 
       p {
         @extend .p-two;
+        margin: 0;
+        margin-bottom: 2rem;
       }
 
       a {

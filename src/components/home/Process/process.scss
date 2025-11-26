@@ -1,0 +1,45 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
+.process {
+  background-color: $secondaryColor;
+  position: relative;
+  padding: 6.5rem 0;
+
+  &-title {
+    width: calc(100%);
+
+    h2 {
+      @extend .p-one;
+      margin: 0;
+      color: $whiteColor;
+    }
+
+    h3 {
+      @extend .hl-three;
+      margin: 1rem 0;
+      color: $whiteColor;
+    }
+  }
+
+  &-logo {
+    position: absolute;
+    top: 3.5rem;
+    right: 5rem;
+    width: 20rem;
+  }
+
+  &-steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: calc(100%);
+    margin: 5rem 0;
+
+    &-step {
+      width: calc(100% / 3);
+      color: $whiteColor;
+    }
+  }
+}

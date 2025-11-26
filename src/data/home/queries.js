@@ -49,3 +49,32 @@ export const About_Intro_Query = `
         }
     }
 `;
+
+export const Process_Query = `
+   	 process: processComponent {
+        title
+        subTitle
+         logo {
+            node {
+                sourceUrl
+                altText
+                mediaDetails {
+                    width
+                    height
+                }
+            }
+        }
+        processSteps {
+            title
+            content
+        }
+        buttonText
+        buttonLink {
+            edges {
+                node {
+                    uri
+                }
+            }
+        }
+    }
+`;

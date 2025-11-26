@@ -4,10 +4,11 @@ import Layout from "../layouts/Layout.astro";
 import HeroIntro from "../components/shared/PageComponents/HeroIntro/HeroIntro.astro";
 import AboutIntro from "../components/home/AboutIntro/AboutIntro.astro";
 import ServicesList from "../components/shared/PageComponents/ServicesList/ServicesList.astro";
+import Process from "../components/home/Process/Process.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
 import { Hero_Intro_Query, Servcies_List_Query } from "../data/shared/queries";
-import { About_Intro_Query } from "../data/home/queries";
+import { About_Intro_Query, Process_Query } from "../data/home/queries";
 
 const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   method: "POST",
@@ -23,6 +24,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
           ${Hero_Intro_Query}
           ${About_Intro_Query}
           ${Servcies_List_Query}
+          ${Process_Query}
         }
 			}
 		}
@@ -45,4 +47,5 @@ const {
   <HeroIntro data={homePage.heroIntro} />
   <AboutIntro data={homePage.aboutIntro} />
   <ServicesList data={homePage.servicesList} />
+  <Process data={homePage.process} />
 </Layout>

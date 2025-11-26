@@ -4,6 +4,10 @@ import Button from "../../shared/Button.astro";
 import Wrapper from "../../shared/Wrapper.astro";
 import "./process.scss";
 
+import iconOne from "../../../assets/one.png";
+import iconTwo from "../../../assets/two.png";
+import iconThree from "../../../assets/three.png";
+
 const { title, subTitle, logo, processSteps, buttonText, buttonLink } =
   Astro.props.data;
 
@@ -33,9 +37,23 @@ const imageAlt = logo?.node?.altText || "";
 
     <div class="process-steps">
       {
-        processSteps.map((step: any) => {
+        processSteps.map((step: any, index: any) => {
           return (
             <div class="process-steps-step">
+              <div class="process-steps-step-icon">
+                <Image
+                  src={
+                    index === 0 ? iconOne : index === 1 ? iconTwo : iconThree
+                  }
+                  alt={`Step ${index === 0 ? "one" : index === 1 ? "two" : "three"}`}
+                  format="webp"
+                  widths={[800, 1200, 1600, 2000]}
+                  sizes="100vw"
+                  loading="eager"
+                  inferSize={true}
+                  class=""
+                />
+              </div>
               <div>
                 <h3>{step.title}</h3>
               </div>

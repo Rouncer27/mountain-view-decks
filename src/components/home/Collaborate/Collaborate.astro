@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+import Wrapper from "../../shared/Wrapper.astro";
+import "./collaborate.scss";
+
+const { title, content, image, backgroundImage, buttonText, buttonLink } =
+  Astro.props.data;
+
+const imageSrc = image?.node?.sourceUrl;
+const imageAlt = image?.node?.altText || "";
+const bgImageSrc = backgroundImage?.node?.sourceUrl;
+const bgImageAlt = backgroundImage?.node?.altText || "";
+---
+
+<section class="collaborate">
+  <Wrapper classes="collaborate-wrapper">
+    <div class="collaborate-content">
+      <div class="collaborate-content-title">
+        <h2 set:html={title} />
+      </div>
+      <div class="collaborate-content-paragraph" set:html={content} />
+      <div class="collaborate-content-link">
+        <a href={buttonLink.edges[0].node.uri}>{buttonText}</a>
+      </div>
+    </div>
+    <div class="collaborate-image">
+      <Image
+        src={imageSrc}
+        alt={imageAlt}
+        format="webp"
+        widths={[800, 1200, 1600, 2000]}
+        sizes="100vw"
+        loading="eager"
+        inferSize={true}
+        class=""
+      />
+    </div>
+  </Wrapper>
+  <div class="collaborate-bgimage">
+    <Image
+      src={bgImageSrc}
+      alt={bgImageAlt}
+      format="webp"
+      widths={[800, 1200, 1600, 2000]}
+      sizes="100vw"
+      loading="eager"
+      inferSize={true}
+      class=""
+    />
+  </div>
+
+  <div class="collaborate-overlay"></div>
+</section>

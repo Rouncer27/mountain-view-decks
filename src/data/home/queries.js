@@ -78,3 +78,38 @@ export const Process_Query = `
         }
     }
 `;
+
+export const Collaborate_Query = `
+   	 collaborate: collaborateComponent {
+        title
+        content
+        image {
+            node {
+                sourceUrl
+                altText
+                mediaDetails {
+                    width
+                    height
+                }
+            }
+        }
+        backgroundImage {
+            node {
+                sourceUrl
+                altText
+                mediaDetails {
+                    width
+                    height
+                }
+            }
+        }
+        buttonText
+        buttonLink {
+            edges {
+                node {
+                    uri
+                }
+            }
+        }
+    }
+`;

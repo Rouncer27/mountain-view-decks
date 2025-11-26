@@ -6,6 +6,7 @@ import AboutIntro from "../components/home/AboutIntro/AboutIntro.astro";
 import ServicesList from "../components/shared/PageComponents/ServicesList/ServicesList.astro";
 import Process from "../components/home/Process/Process.astro";
 import Collaborate from "../components/home/Collaborate/Collaborate.astro";
+import LatestArticle from "../components/home/LatestArticle/LatestArticle.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
 import { Hero_Intro_Query, Servcies_List_Query } from "../data/shared/queries";
@@ -55,4 +56,5 @@ const {
   <ServicesList data={homePage.servicesList} />
   <Process data={homePage.process} />
   <Collaborate data={homePage.collaborate} />
+  <LatestArticle />
 </Layout>

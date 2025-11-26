@@ -1,0 +1,52 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
+.latest-news {
+  padding: 6rem 0;
+  background-color: #efebe5;
+
+  &-wrapper {
+    position: relative;
+  }
+
+  &-content {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0%, -50%);
+    width: 50%;
+    max-width: 60rem;
+    padding: 2.5rem 3.5rem;
+    background-color: $whiteColor;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16);
+
+    &-link {
+      width: 100%;
+      text-align: right;
+    }
+
+    h2 {
+      @extend .hl-three;
+      margin: 0;
+      margin-bottom: 1.4rem;
+    }
+
+    p {
+      @extend .p-two;
+      margin: 0;
+      margin-bottom: 2rem;
+    }
+
+    a {
+      @extend .p-three;
+      text-align: right;
+    }
+  }
+
+  &-image {
+    width: 60%;
+    margin-right: 0rem;
+    margin-left: auto;
+  }
+}

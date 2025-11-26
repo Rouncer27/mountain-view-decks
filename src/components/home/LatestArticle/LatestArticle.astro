@@ -1,0 +1,72 @@
+---
+import { Image } from "astro:assets";
+import Wrapper from "../../shared/Wrapper.astro";
+import "./latestArticle.scss";
+
+const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
+  method: "POST",
+  headers: {
+    "content-type": "application/json",
+  },
+  body: JSON.stringify({
+    query: `
+        query postsQuery {
+            posts(first: 1) {
+                nodes {
+                    uri
+                    slug
+                    title
+                    postFields {
+                        excerpt
+                        featuredImage  {
+                            node {
+                                sourceUrl
+                                altText
+                                mediaDetails {
+                                    width
+                                    height
+                                }
+                            }
+                        }      
+                    }
+                }   
+            }
+        }
+        `,
+  }),
+});
+
+const { data } = await response.json();
+const post = data.posts.nodes[0];
+
+const featuredImageSrc = post.postFields.featuredImage?.node?.sourceUrl;
+const featuredImageAlt = post.postFields.featuredImage?.node?.altText || "";
+---
+
+<div class="latest-news">
+  <Wrapper classes="latest-news-wrapper">
+    <div class="latest-news-content">
+      <div class="latest-news-content-title">
+        <h2>{post.title}</h2>
+      </div>
+      <div
+        class="latest-news-content-excerpt"
+        set:html={post.postFields.excerpt}
+      />
+      <div class="latest-news-content-link">
+        <a href={`/news-resources/${post.slug}`}>Read More</a>
+      </div>
+    </div>
+    <div class="latest-news-image">
+      <Image
+        src={featuredImageSrc}
+        alt={featuredImageAlt}
+        format="webp"
+        widths={[800, 1200, 1600, 2000]}
+        sizes="100vw"
+        loading="eager"
+        inferSize={true}
+      />
+    </div>
+  </Wrapper>
+</div>

@@ -1,0 +1,36 @@
+@use "../styles/abstracts/" as *;
+
+.footer {
+  position: relative;
+  padding-top: 1.5rem;
+  background-color: $secondaryColor;
+
+  &-strip {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 1.5rem;
+    background-color: $primaryColor;
+  }
+
+  &-wrapper {
+    align-items: center;
+  }
+
+  &-logo {
+    width: calc(8%);
+  }
+
+  &-contact {
+    width: calc(15%);
+  }
+
+  &-social {
+    width: calc(12.5%);
+  }
+
+  &-nav {
+    width: calc(64.5%);
+  }
+}

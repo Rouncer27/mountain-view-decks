@@ -1,9 +1,15 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import HeroIntro from "../../components/shared/PageComponents/HeroIntro/HeroIntro.astro";
+import Callout from "../../components/services/Callout/Callout.astro";
+import ServicesList from "../../components/shared/PageComponents/ServicesList/ServicesList.astro";
 
 import { Page_Seo_Query } from "../../data/page/queries";
-import { Hero_Intro_Query } from "../../data/shared/queries";
+import {
+  Hero_Intro_Query,
+  Servcies_List_Query,
+} from "../../data/shared/queries";
+import { Callout_Query } from "../../data/services/queries";
 
 const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   method: "POST",
@@ -18,6 +24,8 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
 
         servicesPage {
           ${Hero_Intro_Query}
+          ${Callout_Query}
+          ${Servcies_List_Query}
         }
 			}
 		}
@@ -38,4 +46,6 @@ const {
   metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
 >
   <HeroIntro data={servicesPage.heroIntro} />
+  <Callout data={servicesPage.callout} />
+  <ServicesList data={servicesPage.servicesList} />
 </Layout>

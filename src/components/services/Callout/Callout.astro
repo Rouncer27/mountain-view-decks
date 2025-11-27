@@ -1,0 +1,14 @@
+---
+import Wrapper from "../../shared/Wrapper.astro";
+import "./callout.scss";
+
+const { content } = Astro.props.data;
+---
+
+<div class="callout">
+  <Wrapper>
+    <div class="callout-content">
+      <p set:html={content} />
+    </div>
+  </Wrapper>
+</div>

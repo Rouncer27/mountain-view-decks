@@ -4,16 +4,28 @@ import Button from "../../Button.astro";
 import Wrapper from "../../Wrapper.astro";
 import "./servicesList.scss";
 
-const { title, subTitle, buttonText, buttonLink, services } = Astro.props.data;
+const { title, titleStyleTwo, subTitle, buttonText, buttonLink, services } =
+  Astro.props.data;
 ---
 
 <div class="services-list">
   <Wrapper classes="services-list-wrapper">
-    <div class="services-list-intro">
-      <h2>{title}</h2>
-      <h3>{subTitle}</h3>
-      <Button ele="a" href={buttonLink.edges[0].node.uri}>{buttonText}</Button>
-    </div>
+    {
+      titleStyleTwo ? (
+        <div class="services-list-intro style-two">
+          <h2>{title}</h2>
+        </div>
+      ) : (
+        <div class="services-list-intro">
+          <h2>{title}</h2>
+          <h3>{subTitle}</h3>
+          <Button ele="a" href={buttonLink.edges[0].node.uri}>
+            {buttonText}
+          </Button>
+        </div>
+      )
+    }
+
     <div class="services-list-services">
       {
         services.map((service: any) => {

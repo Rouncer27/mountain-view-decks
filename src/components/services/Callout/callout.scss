@@ -1,0 +1,22 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
+.callout {
+  background-color: #efebe5;
+
+  &-content {
+    max-width: 110rem;
+    margin-top: 7.5rem;
+    margin-bottom: 0rem;
+    padding: 3.2rem 0;
+    border-top: 0.2rem solid $blackColor;
+    border-bottom: 0.2rem solid $blackColor;
+    text-align: center;
+
+    p {
+      @extend .hl-three;
+      margin: 0;
+    }
+  }
+}

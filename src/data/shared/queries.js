@@ -36,6 +36,7 @@ export const Hero_Intro_Query = `
 export const Servcies_List_Query = `
    	 servicesList: servicesListComponent {
         title
+        titleStyleTwo
         subTitle
         buttonText
         buttonLink {

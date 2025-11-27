@@ -19,6 +19,16 @@
       margin: 1rem 0;
       font-weight: 600;
     }
+
+    &.style-two {
+      text-align: center;
+
+      h2 {
+        @extend .hl-one;
+        margin: 0;
+        font-weight: 600;
+      }
+    }
   }
 
   &-services {

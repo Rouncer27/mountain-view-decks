@@ -1,4 +1,5 @@
 @use "../styles/abstracts/" as *;
+@use "../styles/global/paragraphs";
 
 .main-header {
   position: absolute;
@@ -6,6 +7,42 @@
   right: 0;
   left: 0;
   z-index: 99999999999;
+
+  &-banner {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    border-bottom: 0.1rem solid rgba(255, 255, 255, 0.5);
+
+    @media (min-width: 768px) {
+      display: block;
+    }
+
+    &-wrapper {
+      width: 100%;
+      ul {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 1rem 5rem;
+
+        li {
+          @extend .p-three;
+          color: $whiteColor;
+          text-transform: uppercase;
+        }
+
+        a {
+          @extend .p-three;
+          color: $whiteColor;
+        }
+      }
+    }
+  }
 
   &-wrapper {
     margin-top: 0 !important;
@@ -19,6 +56,7 @@
     margin-top: 1rem;
     margin-bottom: 2.5rem;
     overflow: hidden;
+    z-index: 101;
 
     @media (min-width: 1025px) {
       width: 18rem;
@@ -47,9 +85,11 @@
   }
 
   &-navigation {
+    position: relative;
     display: none;
     flex-wrap: wrap;
     justify-content: center;
+    z-index: 102;
 
     @media (min-width: 768px) {
       display: flex;

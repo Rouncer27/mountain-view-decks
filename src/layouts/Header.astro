@@ -13,6 +13,7 @@ import {
   Mobile_Menu_Query,
   Logo_Options_Query,
   Social_Media_Links_Query,
+  Contact_Information_Query,
 } from "../data/header/queries";
 
 import Wrapper from "../components/shared/Wrapper.astro";
@@ -29,6 +30,7 @@ const response = await fetch(`${import.meta.env.PUBLIC_WP_URL}/graphql`, {
           ${Mobile_Menu_Query}
           ${Logo_Options_Query}
           ${Social_Media_Links_Query}
+          ${Contact_Information_Query}
         }
     `,
   }),
@@ -39,6 +41,7 @@ const {
     mobile: { menuItems: mobile },
     mainLogo: { logoOptions },
     socialMediaLinks,
+    contactInformation,
   },
 } = await response.json();
 
@@ -75,6 +78,19 @@ const newLogoOptions = {
       />
     </div>
   </Wrapper>
+  <div class="main-header-banner">
+    <div class="main-header-banner-wrapper">
+      <ul>
+        <li>
+          Call Today! <a
+            href={`tel:+1${contactInformation.contactOptions.phoneNumber}`}
+            >{contactInformation.contactOptions.phoneNumber}</a
+          >
+        </li>
+        <li><a href="/contact">Get Started</a></li>
+      </ul>
+    </div>
+  </div>
   <div class="main-header-mobile">
     <MobileNav
       client:only="react"

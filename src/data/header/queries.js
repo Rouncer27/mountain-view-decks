@@ -63,3 +63,11 @@ export const Social_Media_Links_Query = `
         }
     }
 `;
+
+export const Contact_Information_Query = `
+     contactInformation: siteWideSettings {
+        contactOptions {
+            phoneNumber
+        }
+    }
+`;

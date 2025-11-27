@@ -31,17 +31,21 @@
     margin-bottom: 5.5rem;
 
     &-content {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      transform: translate(0%, -50%);
-      width: 50%;
+      width: 100%;
       max-width: 60rem;
       padding: 2.5rem 3.5rem;
       background-color: $whiteColor;
       box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16);
-
       z-index: 10;
+
+      @media (min-width: 768px) {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(0%, -50%);
+        width: 50%;
+        margin-bottom: 0;
+      }
 
       &-link {
         width: 100%;
@@ -67,9 +71,13 @@
     }
 
     &-image {
-      width: 60%;
-      margin-right: 0rem;
-      margin-left: auto;
+      width: 100%;
+
+      @media (min-width: 768px) {
+        width: 60%;
+        margin-right: 0rem;
+        margin-left: auto;
+      }
     }
 
     &:nth-of-type(2n + 2) {

@@ -39,6 +39,10 @@
         a {
           @extend .p-three;
           color: $whiteColor;
+
+          &:hover {
+            color: $accentColor;
+          }
         }
       }
     }

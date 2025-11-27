@@ -11,6 +11,7 @@ import {
   Logo_Options_Query,
   Footer_Menu_Query,
   Social_Media_Links_Query,
+  Contact_Information_Query,
 } from "../data/footer/queries";
 
 const response = await fetch(`${import.meta.env.PUBLIC_WP_URL}/graphql`, {
@@ -24,6 +25,7 @@ const response = await fetch(`${import.meta.env.PUBLIC_WP_URL}/graphql`, {
           ${Logo_Options_Query}
           ${Footer_Menu_Query}
           ${Social_Media_Links_Query}
+          ${Contact_Information_Query}
         }
     `,
   }),
@@ -33,6 +35,7 @@ const {
     footerLogo: { logoOptions },
     socialMediaLinks,
     footerMenu,
+    contactInformation,
   },
 } = await response.json();
 ---
@@ -45,7 +48,14 @@ const {
         <FooterLogo data={logoOptions} />
       </div>
     </div>
-    <div class="footer-contact"></div>
+    <div class="footer-contact">
+      <p>
+        Call Today! <br />
+        <a href={`tel:+1${contactInformation.contactOptions.phoneNumber}`}
+          >{contactInformation.contactOptions.phoneNumber}</a
+        >
+      </p>
+    </div>
     <div class="footer-social">
       <SocialMediaLinks data={socialMediaLinks} />
     </div>

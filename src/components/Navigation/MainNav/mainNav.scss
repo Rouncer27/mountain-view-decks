@@ -14,6 +14,7 @@
     height: 100%;
 
     .main-nav-top-list {
+      position: relative;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -28,7 +29,6 @@
       }
 
       li {
-        position: relative;
         margin: 0 1rem;
 
         @media (min-width: 1150px) {
@@ -65,12 +65,15 @@
         }
 
         .main-nav-sub-menu {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
           position: absolute;
           top: calc(100% + 0.1rem);
           left: 0;
-          width: 25rem;
+          width: 100%;
           padding: 1rem;
-          background-color: rgba($accentColor, 0.7);
+          background-color: rgba($whiteColor, 0.2);
           transition: all 0.3s ease-in-out;
           opacity: 0;
           visibility: hidden;
@@ -88,18 +91,22 @@
             a {
               @extend .p-two;
               padding: 0.5rem 0;
+              border-top: 0.2rem solid transparent;
               border-bottom: 0.2rem solid transparent;
               font-weight: 500;
               color: $whiteColor;
 
               &:hover {
-                color: $secondaryColor;
+                color: $whiteColor;
+                border-top-color: $accentColor;
+                border-bottom-color: $accentColor;
               }
             }
 
             a.main-nav-sub-current {
-              color: $secondaryColor;
-              border-bottom-color: $secondaryColor;
+              color: $whiteColor;
+              border-top-color: $accentColor;
+              border-bottom-color: $accentColor;
 
               &:hover {
                 cursor: default;

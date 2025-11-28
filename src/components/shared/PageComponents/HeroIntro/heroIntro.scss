@@ -26,6 +26,11 @@
       margin-right: 4rem;
       margin-bottom: 10rem;
       z-index: 100;
+
+      @media (min-width: 768px) {
+        max-width: 110rem;
+        margin: 0 auto 10rem;
+      }
     }
 
     &-title {

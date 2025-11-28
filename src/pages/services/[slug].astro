@@ -1,6 +1,9 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import HeroIntro from "../../components/shared/PageComponents/HeroIntro/HeroIntro.astro";
+
 import { Page_Seo_Query } from "../../data/page/queries";
+import { Hero_Intro_Query } from "../../data/shared/queries";
 
 export async function getStaticPaths() {
   const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
@@ -49,6 +52,9 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
       service(idType: SLUG, id: $id) {
         ${Page_Seo_Query}
         title
+        servicesPost {
+          ${Hero_Intro_Query}
+        }
       }
     }
     `,
@@ -66,4 +72,10 @@ const {
 } = await response.json();
 ---
 
-<Layout><h2>Service Single Page</h2></Layout>
+<Layout
+  metaImg={seoMetaTags.seoMetaInformation.metaImage.sourceUrl}
+  metaTitle={seoMetaTags.seoMetaInformation.metaTitle}
+  metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
+>
+  <HeroIntro data={service.servicesPost.heroIntro} />
+</Layout>

@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import HeroIntro from "../../components/shared/PageComponents/HeroIntro/HeroIntro.astro";
 import Callout from "../../components/services/Callout/Callout.astro";
 import ServicesList from "../../components/shared/PageComponents/ServicesList/ServicesList.astro";
+import Testimonials from "../../components/shared/PageComponents/Testimonials/Testimonials.astro";
 
 import { Page_Seo_Query } from "../../data/page/queries";
 import {
@@ -48,4 +49,5 @@ const {
   <HeroIntro data={servicesPage.heroIntro} />
   <Callout data={servicesPage.callout} />
   <ServicesList data={servicesPage.servicesList} />
+  <Testimonials />
 </Layout>

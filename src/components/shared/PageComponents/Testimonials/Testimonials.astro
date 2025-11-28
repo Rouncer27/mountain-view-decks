@@ -1,0 +1,32 @@
+---
+import TestimonialsSlider from "./TestimonialsSlider.jsx";
+
+const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
+  method: "POST",
+  headers: {
+    "content-type": "application/json",
+  },
+  body: JSON.stringify({
+    query: `
+        query testimonialsQuery {
+             testimonials {
+                nodes {
+                    title
+                    testimonialsPost {
+                        content
+                    }
+                }
+            }
+        }
+        `,
+  }),
+});
+
+const { data } = await response.json();
+const testimonials = data?.testimonials?.nodes;
+---
+
+<TestimonialsSlider
+  client:only="react"
+  testimonials={testimonials ? testimonials : []}
+/>

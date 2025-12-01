@@ -1,0 +1,23 @@
+---
+// @ts-nocheck
+import Wrapper from "../../shared/Wrapper.astro";
+import "./callouts.scss";
+
+const { callouts } = Astro.props.data;
+---
+
+<section class="callouts">
+  <Wrapper classes="callouts-wrapper">
+    {
+      callouts.map((callout) => {
+        return (
+          <div class="callouts-callout">
+            <div>
+              <h2 set:html={callout.callout} />
+            </div>
+          </div>
+        );
+      })
+    }
+  </Wrapper>
+</section>

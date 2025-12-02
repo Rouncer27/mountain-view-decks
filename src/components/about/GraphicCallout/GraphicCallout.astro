@@ -1,0 +1,63 @@
+---
+import { Image } from "astro:assets";
+import Button from "../../shared/Button.astro";
+import Wrapper from "../../shared/Wrapper.astro";
+import "./graphicCallout.scss";
+
+const {
+  title,
+  graphic,
+  buttonRequired,
+  buttonOneText,
+  buttonOneLink,
+  buttonTwoRequired,
+  buttonTwoText,
+  buttonTwoLink,
+} = Astro.props.data;
+
+const graphicSrc = graphic?.node?.sourceUrl;
+const graphicAlt = graphic?.node?.altText || "";
+---
+
+<div class="graphic-callout">
+  <Wrapper classes="graphic-callout-wrapper">
+    <div class="graphic-callout-titles">
+      <h2>{title}</h2>
+    </div>
+    <div class="graphic-callout-image">
+      <Image
+        src={graphicSrc}
+        alt={graphicAlt}
+        format="webp"
+        widths={[800, 1200, 1600, 2000]}
+        sizes="100vw"
+        loading="eager"
+        inferSize={true}
+        class=""
+      />
+    </div>
+    {
+      buttonRequired && (
+        <div class="graphic-callout-buttons">
+          <Button
+            classes="graphic-callout-buttons-one"
+            ele={"a"}
+            href={buttonOneLink.edges[0].node.uri}
+          >
+            {buttonOneText}
+          </Button>
+          {buttonTwoRequired && (
+            <Button
+              classes="graphic-callout-buttons-two"
+              btnstyle="two"
+              ele={"a"}
+              href={buttonTwoLink.edges[0].node.uri}
+            >
+              {buttonTwoText}
+            </Button>
+          )}
+        </div>
+      )
+    }
+  </Wrapper>
+</div>

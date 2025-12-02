@@ -1,0 +1,37 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
+.graphic-callout {
+  padding: 8rem 0;
+
+  &-wrapper {
+    max-width: 110rem !important;
+  }
+
+  &-titles {
+    width: 100%;
+    text-align: center;
+
+    h2 {
+      @extend .hl-one;
+      margin: 0;
+    }
+  }
+
+  &-image {
+    max-width: 90rem;
+    margin-top: 5.5rem;
+    margin-bottom: 5.5rem;
+  }
+
+  &-buttons {
+    width: 100%;
+    text-align: center;
+
+    &-two {
+      color: #1d3a47 !important;
+      border-color: #1d3a47 !important;
+    }
+  }
+}

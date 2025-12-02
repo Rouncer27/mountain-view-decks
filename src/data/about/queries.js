@@ -59,3 +59,37 @@ export const Values_Query = `
         }
     }
 `;
+
+export const Graphic_Callout_Query = `
+   	 graphicCallout: graphicCalloutComponent {
+        title
+        graphic  {
+            node {
+                sourceUrl
+                altText
+                mediaDetails {
+                    width
+                    height
+                }
+            }
+        }
+        buttonRequired
+        buttonOneText
+        buttonOneLink {
+            edges {
+                node {
+                    uri
+                }
+            }
+        }
+        buttonTwoRequired
+        buttonTwoText
+        buttonTwoLink {
+            edges {
+                node {
+                    uri
+                }
+            }
+        }            
+    }
+`;

@@ -50,3 +50,38 @@ export const Types_Query = `
         }                
     }
 `;
+
+export const Graphic_Callout_Query = `
+   	 graphicCallout: graphicCalloutComponent {
+        title
+        subTitle
+        graphic  {
+            node {
+                sourceUrl
+                altText
+                mediaDetails {
+                    width
+                    height
+                }
+            }
+        }
+        buttonRequired
+        buttonOneText
+        buttonOneLink {
+            edges {
+                node {
+                    uri
+                }
+            }
+        }
+        buttonTwoRequired
+        buttonTwoText
+        buttonTwoLink {
+            edges {
+                node {
+                    uri
+                }
+            }
+        }            
+    }
+`;

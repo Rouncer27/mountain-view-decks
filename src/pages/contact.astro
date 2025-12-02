@@ -1,7 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import HeroSmall from "../components/shared/PageComponents/HeroSmall/HeroSmall.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
+import { Hero_Small_Query } from "../data/shared/queries";
 
 const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   method: "POST",
@@ -13,6 +15,10 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
 		query contactPageQuery {
 			page(id: "/contact", idType: URI) {
 				${Page_Seo_Query}
+
+        contactPage {
+          ${Hero_Small_Query}
+        }
 			}
 		}
 	`,
@@ -21,7 +27,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
 
 const {
   data: {
-    page: { seoMetaTags },
+    page: { seoMetaTags, contactPage },
   },
 } = await response.json();
 ---
@@ -31,7 +37,5 @@ const {
   metaTitle={seoMetaTags.seoMetaInformation.metaTitle}
   metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
 >
-  <div>
-    <h1>Contact Page</h1>
-  </div>
+  <HeroSmall data={contactPage.heroSmall} />
 </Layout>

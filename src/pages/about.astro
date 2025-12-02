@@ -5,6 +5,7 @@ import ContentBlock from "../components/about/ContentBlock/ContentBlock.astro";
 import Vision from "../components/about/Vision/Vision.astro";
 import Values from "../components/about/Values/Values.astro";
 import GraphicCallout from "../components/about/GraphicCallout/GraphicCallout.astro";
+import Testimonials from "../components/shared/PageComponents/Testimonials/Testimonials.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
 import { Hero_Intro_Query } from "../data/shared/queries";
@@ -14,7 +15,6 @@ import {
   Values_Query,
   Graphic_Callout_Query,
 } from "../data/about/queries";
-import Testimonials from "../components/shared/PageComponents/Testimonials/Testimonials.astro";
 
 const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   method: "POST",

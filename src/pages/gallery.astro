@@ -1,7 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import HeroIntro from "../components/shared/PageComponents/HeroIntro/HeroIntro.astro";
+
+import Testimonials from "../components/shared/PageComponents/Testimonials/Testimonials.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
+import { Hero_Intro_Query } from "../data/shared/queries";
 
 const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   method: "POST",
@@ -13,6 +17,10 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
 		query galleryPageQuery {
 			page(id: "/gallery", idType: URI) {
 				${Page_Seo_Query}
+
+        galleryPage {
+          ${Hero_Intro_Query}
+        }
 			}
 		}
 	`,
@@ -21,7 +29,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
 
 const {
   data: {
-    page: { seoMetaTags },
+    page: { seoMetaTags, galleryPage },
   },
 } = await response.json();
 ---
@@ -31,7 +39,6 @@ const {
   metaTitle={seoMetaTags.seoMetaInformation.metaTitle}
   metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
 >
-  <div>
-    <h1>Gallery Page</h1>
-  </div>
+  <HeroIntro data={galleryPage.heroIntro} />
+  <Testimonials />
 </Layout>

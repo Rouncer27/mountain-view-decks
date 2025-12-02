@@ -1,0 +1,45 @@
+---
+// @ts-nocheck
+import { Callout_Query } from "../../../data/services/queries";
+import Wrapper from "../../shared/Wrapper.astro";
+import "./values.scss";
+
+import { Image } from "astro:assets";
+
+const { title, image, values } = Astro.props.data;
+
+const imageSrc = image?.node?.sourceUrl;
+const imageAlt = image?.node?.altText || "";
+---
+
+<section class="values">
+  <Wrapper classes="values-wrapper">
+    <div class="values-image">
+      <Image
+        src={imageSrc}
+        alt={imageAlt}
+        format="webp"
+        widths={[800, 1200, 1600, 2000]}
+        sizes="100vw"
+        loading="eager"
+        inferSize={true}
+        class=""
+      />
+    </div>
+    <div class="values-title">
+      <h2>{title}</h2>
+    </div>
+    <div class="values-list">
+      {
+        values.map((value) => {
+          return (
+            <div class="values-list-item">
+              <h3>{value.title}</h3>
+              <div set:html={value.content} />
+            </div>
+          );
+        })
+      }
+    </div>
+  </Wrapper>
+</section>

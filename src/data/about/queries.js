@@ -39,3 +39,23 @@ export const Vision_Query = `
         }
     }
 `;
+
+export const Values_Query = `
+     values: valuesComponent {
+        image {
+            node {
+                sourceUrl
+                altText
+                mediaDetails {
+                    width
+                    height
+                }
+            }
+        }
+        title
+        values {
+            title
+            content
+        }
+    }
+`;

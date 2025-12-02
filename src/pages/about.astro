@@ -3,10 +3,15 @@ import Layout from "../layouts/Layout.astro";
 import HeroIntro from "../components/shared/PageComponents/HeroIntro/HeroIntro.astro";
 import ContentBlock from "../components/about/ContentBlock/ContentBlock.astro";
 import Vision from "../components/about/Vision/Vision.astro";
+import Values from "../components/about/Values/Values.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
 import { Hero_Intro_Query } from "../data/shared/queries";
-import { Content_Block_Query, Vision_Query } from "../data/about/queries";
+import {
+  Content_Block_Query,
+  Vision_Query,
+  Values_Query,
+} from "../data/about/queries";
 
 const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   method: "POST",
@@ -23,6 +28,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
           ${Hero_Intro_Query}
           ${Content_Block_Query}
           ${Vision_Query}
+          ${Values_Query}
         }
 			}
 		}
@@ -45,4 +51,5 @@ const {
   <HeroIntro data={aboutPage.heroIntro} />
   <ContentBlock data={aboutPage.contentBlock} />
   <Vision data={aboutPage.vision} />
+  <Values data={aboutPage.values} />
 </Layout>

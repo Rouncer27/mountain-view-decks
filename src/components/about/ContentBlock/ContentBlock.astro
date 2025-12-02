@@ -1,0 +1,47 @@
+---
+import Wrapper from "../../shared/Wrapper.astro";
+import "./contentBlock.scss";
+import { Image } from "astro:assets";
+
+const { title, content, imageOne, imageTwo } = Astro.props.data;
+
+const imageOneSrc = imageOne?.node?.sourceUrl;
+const imageOneAlt = imageOne?.node?.altText || "";
+const imageTwoSrc = imageTwo?.node?.sourceUrl;
+const imageTwoAlt = imageTwo?.node?.altText || "";
+---
+
+<section class="content-block">
+  <Wrapper classes="content-block-wrapper">
+    <div class="content-block-title">
+      <h2>{title}</h2>
+    </div>
+    <div class="content-block-paragraphs" set:html={content} />
+  </Wrapper>
+  <div class="content-block-images">
+    <div class="content-block-images-image image-one">
+      <Image
+        src={imageOneSrc}
+        alt={imageOneAlt}
+        format="webp"
+        widths={[800, 1200, 1600, 2000]}
+        sizes="100vw"
+        loading="eager"
+        inferSize={true}
+        class=""
+      />
+    </div>
+    <div class="content-block-images-image image-two">
+      <Image
+        src={imageTwoSrc}
+        alt={imageTwoAlt}
+        format="webp"
+        widths={[800, 1200, 1600, 2000]}
+        sizes="100vw"
+        loading="eager"
+        inferSize={true}
+        class=""
+      />
+    </div>
+  </div>
+</section>

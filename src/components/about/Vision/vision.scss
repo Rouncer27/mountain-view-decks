@@ -1,0 +1,34 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
+.vision {
+  padding: 5rem 0;
+
+  &-wrapper {
+    max-width: 110rem !important;
+  }
+
+  &-title {
+    width: 100%;
+    text-align: center;
+
+    h2 {
+      @extend .hl-one;
+    }
+  }
+
+  &-content {
+    width: 100%;
+    text-align: center;
+
+    p {
+      @extend .hl-three;
+    }
+  }
+
+  &-link {
+    width: 100%;
+    text-align: center;
+  }
+}

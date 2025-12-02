@@ -1,0 +1,19 @@
+---
+import Button from "../../shared/Button.astro";
+import Wrapper from "../../shared/Wrapper.astro";
+import "./vision.scss";
+
+const { title, content, buttonText, buttonLink } = Astro.props.data;
+---
+
+<section class="vision">
+  <Wrapper classes="vision-wrapper">
+    <div class="vision-title">
+      <h2>{title}</h2>
+    </div>
+    <div class="vision-content" set:html={content} />
+    <div class="vision-link">
+      <Button ele="a" href={buttonLink.edges[0].node.uri}>{buttonText}</Button>
+    </div>
+  </Wrapper>
+</section>

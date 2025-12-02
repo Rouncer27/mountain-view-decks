@@ -1,0 +1,28 @@
+---
+import "./heroSmall.scss";
+
+import { Image } from "astro:assets";
+
+const { image } = Astro.props.data;
+
+const heroImageSrc = image?.node?.sourceUrl;
+const heroAlt = image?.node?.altText || "";
+---
+
+<div class="hero-small">
+  <div class="hero-small-wrapper">
+    <div class="hero-small-image">
+      <Image
+        src={heroImageSrc}
+        alt={heroAlt}
+        format="webp"
+        widths={[800, 1200, 1600, 2000]}
+        sizes="100vw"
+        loading="eager"
+        inferSize={true}
+        class="hero-small-image-wrap"
+      />
+    </div>
+    <div class="hero-small-overlay"></div>
+  </div>
+</div>

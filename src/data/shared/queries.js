@@ -33,6 +33,21 @@ export const Hero_Intro_Query = `
     }
 `;
 
+export const Hero_Small_Query = `
+   	 heroSmall: heroSmallComponent {
+        image {
+            node {
+                sourceUrl
+                altText
+                mediaDetails {
+                    width
+                    height
+                }
+            }
+        }
+    }
+`;
+
 export const Servcies_List_Query = `
    	 servicesList: servicesListComponent {
         title

@@ -2,10 +2,16 @@
 import Layout from "../../layouts/Layout.astro";
 import HeroIntro from "../../components/shared/PageComponents/HeroIntro/HeroIntro.astro";
 import Callouts from "../../components/service/Callouts/Callouts.astro";
+import ImageContent from "../../components/service/ImageContent/ImageContent.astro";
+import Types from "../../components/service/Types/Types.astro";
 
 import { Page_Seo_Query } from "../../data/page/queries";
 import { Hero_Intro_Query } from "../../data/shared/queries";
-import { Callouts_Query } from "../../data/service/queries";
+import {
+  Callouts_Query,
+  Image_Content_Query,
+  Types_Query,
+} from "../../data/service/queries";
 
 export async function getStaticPaths() {
   const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
@@ -57,6 +63,8 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
         servicesPost {
           ${Hero_Intro_Query}
           ${Callouts_Query}
+          ${Image_Content_Query}
+          ${Types_Query}
         }
       }
     }
@@ -82,4 +90,6 @@ const {
 >
   <HeroIntro data={service.servicesPost.heroIntro} />
   <Callouts data={service.servicesPost.callouts} />
+  <ImageContent data={service.servicesPost.imageContent} />
+  <Types data={service.servicesPost.types} />
 </Layout>

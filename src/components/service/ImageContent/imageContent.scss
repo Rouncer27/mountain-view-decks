@@ -1,0 +1,26 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
+.image-content {
+  padding: 7.5rem 0;
+
+  &-wrapper {
+    align-items: center;
+    max-width: 115rem !important;
+  }
+
+  &-image {
+    width: calc(25%);
+    text-align: center;
+
+    &-container {
+      margin-bottom: 3.5rem;
+    }
+  }
+
+  &-main {
+    width: calc(75% - 5rem);
+    margin-left: 5rem;
+  }
+}

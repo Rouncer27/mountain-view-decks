@@ -1,0 +1,51 @@
+---
+// @ts-nocheck
+import { Image } from "astro:assets";
+import Wrapper from "../../shared/Wrapper.astro";
+import "./types.scss";
+
+const { title, types } = Astro.props.data;
+---
+
+<section class="types">
+  <Wrapper classes="types-wrapper">
+    <div class="types-title">
+      <h2>{title}</h2>
+    </div>
+    <div class="types-container">
+      {
+        types.map((type) => {
+          const imageSrc = type?.image?.node?.sourceUrl;
+          const imageAlt = type?.image?.node?.altText || "";
+          return (
+            <div class="types-container-type">
+              <div class="types-container-type-image">
+                <div class="types-container-type-image-title">
+                  <h3>{type.title}</h3>
+                </div>
+                <div>
+                  <Image
+                    src={imageSrc}
+                    alt={imageAlt}
+                    format="webp"
+                    widths={[800, 1200, 1600, 2000]}
+                    sizes="100vw"
+                    loading="eager"
+                    inferSize={true}
+                    class=""
+                  />
+                </div>
+              </div>
+              <div class="types-container-type-content">
+                <div class="types-container-type-content-bold">
+                  <p>{type.title}</p>
+                </div>
+                <div set:html={type.content} />
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </Wrapper>
+</section>

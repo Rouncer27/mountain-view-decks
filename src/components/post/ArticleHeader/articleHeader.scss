@@ -1,0 +1,44 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
+.article-header {
+  &-wrapper {
+    align-items: center;
+    flex-direction: row-reverse;
+  }
+
+  &-title {
+    width: calc(70% - 3.5rem);
+    margin-left: 3.5rem;
+
+    h1 {
+      @extend .hl-two;
+      margin: 0;
+      font-weight: 600;
+    }
+  }
+
+  &-image {
+    position: relative;
+    width: calc(30%);
+    height: 20vw;
+
+    &-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}

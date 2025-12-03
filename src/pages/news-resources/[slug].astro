@@ -59,7 +59,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
         ${Page_Seo_Query}
         title
         date
-         postFields {
+        postFields {
           excerpt
           article
           featuredImage  {
@@ -100,8 +100,11 @@ const {
   metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
 >
   <HeroSmall data={siteWideSettings.defaultHeroHeaders.heroSmallComponent} />
-  <ArticleHeader />
-  <ArticleBody />
-  <ArticleGallery />
+  <ArticleHeader
+    title={post.title}
+    featuredImage={post.postFields.featuredImage}
+  />
+  <ArticleBody article={post.postFields.article} />
+  <ArticleGallery gallery={post.postFields} />
   <ArticleNav data={Astro.props} />
 </Layout>

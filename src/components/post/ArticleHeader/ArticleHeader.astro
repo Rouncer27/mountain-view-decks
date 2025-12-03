@@ -1,10 +1,31 @@
 ---
 import Wrapper from "../../shared/Wrapper.astro";
 import "./articleHeader.scss";
+import { Image } from "astro:assets";
+
+const { title, featuredImage } = Astro.props;
+const imageSrc = featuredImage?.node?.sourceUrl;
+const imageAlt = featuredImage?.node?.altText || "";
 ---
 
-<header>
-  <Wrapper>
-    <h1>Title Goes Here</h1>
+<header class="article-header">
+  <Wrapper classes="article-header-wrapper">
+    <div class="article-header-title">
+      <h1>{title}</h1>
+    </div>
+    <div class="article-header-image">
+      <div class="article-header-image-container">
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          format="webp"
+          widths={[800, 1200, 1600, 2000]}
+          sizes="100vw"
+          loading="eager"
+          inferSize={true}
+          class=""
+        />
+      </div>
+    </div>
   </Wrapper>
 </header>

@@ -1,10 +1,15 @@
 ---
 import Wrapper from "../../shared/Wrapper.astro";
+import Wysiwyg from "../../shared/Wysiwyg.astro";
 import "./articleBody.scss";
+
+const { article } = Astro.props;
 ---
 
 <article>
   <Wrapper>
-    <h1>Main Article Body Goes Here</h1>
+    <Wysiwyg>
+      <div set:html={article} />
+    </Wysiwyg>
   </Wrapper>
 </article>

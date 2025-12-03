@@ -15,11 +15,13 @@ export const Page_Seo_Query = `
 
 export const Default_Page_Hero_Query = `
    	siteWideSettings {
-        defaultHeader {
-            defaultPageHero {
-                node {
-                    altText
-                    sourceUrl
+        defaultHeroHeaders {
+            heroSmallComponent {
+                image {
+                    node {
+                        altText
+                        sourceUrl
+                    }
                 }
             }
         }

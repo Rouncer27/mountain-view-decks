@@ -72,6 +72,18 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
               }
             }
           }
+
+          galleryRequired
+          gallery {
+            nodes {
+              sourceUrl
+              altText
+              mediaDetails {
+                width
+                height
+              }
+            }
+          }
         }
       }
 
@@ -105,6 +117,10 @@ const {
     featuredImage={post.postFields.featuredImage}
   />
   <ArticleBody article={post.postFields.article} />
-  <ArticleGallery gallery={post.postFields} />
+  {
+    post.postFields.galleryRequired && (
+      <ArticleGallery gallery={post.postFields.gallery} />
+    )
+  }
   <ArticleNav data={Astro.props} />
 </Layout>

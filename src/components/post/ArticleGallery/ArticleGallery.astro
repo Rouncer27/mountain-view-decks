@@ -1,10 +1,33 @@
 ---
+// @ts-nocheck
 import Wrapper from "../../shared/Wrapper.astro";
 import "./articleGallery.scss";
+import { Image } from "astro:assets";
+
+const { gallery } = Astro.props;
 ---
 
-<div>
-  <Wrapper>
-    <h1>Article Gallery Goes Here</h1>
+<div class="article-gallery">
+  <Wrapper classes="article-gallery-wrapper">
+    {
+      gallery.nodes.map((image) => {
+        const imageSrc = image?.sourceUrl;
+        const imageAlt = image?.altText || "";
+        return (
+          <div class="article-gallery-image">
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              format="webp"
+              widths={[800, 1200, 1600, 2000]}
+              sizes="100vw"
+              loading="eager"
+              inferSize={true}
+              class=""
+            />
+          </div>
+        );
+      })
+    }
   </Wrapper>
 </div>

@@ -1,0 +1,15 @@
+---
+import Wrapper from "../../shared/Wrapper.astro";
+import "./articlesIntro.scss";
+
+const { title, content } = Astro.props.data;
+---
+
+<div class="articles-intro">
+  <Wrapper classes="articles-intro-wrapper">
+    <div class="articles-intro-title">
+      <h2>{title}</h2>
+    </div>
+    <div class="articles-intro-content" set:html={content} /></Wrapper
+  >
+</div>

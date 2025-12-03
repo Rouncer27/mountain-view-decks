@@ -1,0 +1,30 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
+.articles-intro {
+  padding: 2rem 0 0;
+
+  &-wrapper {
+    max-width: 130rem !important;
+  }
+
+  &-title {
+    width: 100%;
+
+    h2 {
+      @extend .hl-one;
+      color: $secondaryColor;
+      font-weight: 600;
+    }
+  }
+
+  &-content {
+    width: 100%;
+
+    p {
+      @extend .p-two;
+      color: $secondaryColor;
+    }
+  }
+}

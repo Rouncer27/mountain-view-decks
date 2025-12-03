@@ -1,6 +1,10 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import HeroSmall from "../../components/shared/PageComponents/HeroSmall/HeroSmall.astro";
+import ArticleHeader from "../../components/post/ArticleHeader/ArticleHeader.astro";
+import ArticleBody from "../../components/post/ArticleBody/ArticleBody.astro";
+import ArticleGallery from "../../components/post/ArticleGallery/ArticleGallery.astro";
+import ArticleNav from "../../components/post/ArticleNav/ArticleNav.astro";
 
 import {
   Page_Seo_Query,
@@ -96,4 +100,8 @@ const {
   metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
 >
   <HeroSmall data={siteWideSettings.defaultHeroHeaders.heroSmallComponent} />
+  <ArticleHeader />
+  <ArticleBody />
+  <ArticleGallery />
+  <ArticleNav data={Astro.props} />
 </Layout>

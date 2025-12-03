@@ -1,0 +1,34 @@
+---
+import "./articleNav.scss";
+import Wrapper from "../../shared/Wrapper.astro";
+---
+
+<div class="resources-post-nav">
+  <Wrapper classes="resources-post-nav-wrapper">
+    {
+      Astro.props.data.prev !== null ? (
+        <div
+          class={`resources-post-nav-prev${Astro.props.data.next === null ? " resources-post-nav-prev-alone" : ""}`}
+        >
+          <a href={`/news-resources/${Astro.props.data.prev.slug}`}>
+            <span>&lt;</span>Previous
+          </a>
+        </div>
+      ) : null
+    }
+    <div class="resources-post-nav-home">
+      <a href={`/news-resources`}> Resources </a>
+    </div>
+    {
+      Astro.props.data.next !== null ? (
+        <div
+          class={`resources-post-nav-next${Astro.props.data.prev === null ? " resources-post-nav-next-alone" : ""}`}
+        >
+          <a href={`/news-resources/${Astro.props.data.next.slug}`}>
+            Next<span>&gt;</span>
+          </a>
+        </div>
+      ) : null
+    }
+  </Wrapper>
+</div>

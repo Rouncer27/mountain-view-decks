@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import HeroSmall from "../components/shared/PageComponents/HeroSmall/HeroSmall.astro";
 import Intro from "../components/contact/Intro/Intro.astro";
 import ContactInfo from "../components/contact/ContactInfo/ContactInfo.astro";
+import RequestQuote from "../components/contact/RequestQuote/RequestQuote.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
 import {
@@ -12,6 +13,7 @@ import {
 import {
   Intro_Query,
   Contact_Info_Display_Query,
+  Request_Quote_Query,
 } from "../data/contact/queries";
 
 const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
@@ -29,6 +31,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
           ${Hero_Small_Query}
           ${Intro_Query}
           ${Contact_Info_Display_Query}
+          ${Request_Quote_Query}
         }
 			}
 
@@ -58,4 +61,5 @@ const {
       <ContactInfo data={contactInformation.contactOptions} />
     )
   }
+  <RequestQuote data={contactPage.requestQuote} />
 </Layout>

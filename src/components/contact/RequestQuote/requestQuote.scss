@@ -1,0 +1,21 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
+.request-quote {
+  &-intro {
+    width: 100%;
+
+    h2 {
+      @extend .hl-three;
+    }
+
+    p {
+      @extend .p-one;
+    }
+  }
+
+  &-form {
+    width: 100%;
+  }
+}

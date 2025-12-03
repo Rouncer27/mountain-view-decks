@@ -1,0 +1,25 @@
+---
+import Wrapper from "../../shared/Wrapper.astro";
+import ContactForm from "../../sharedReact/ContactForm/ContactForm";
+import "./requestQuote.scss";
+
+const { title, content, displayContactForm } = Astro.props.data;
+---
+
+<div class="request-quote">
+  <Wrapper class="request-quote-wrapper">
+    <div class="request-quote-intro">
+      <div class="request-quote-intro-title">
+        <h2>{title}</h2>
+      </div>
+      <div class="request-quote-intro-content" set:html={content} />
+    </div>
+    {
+      displayContactForm && (
+        <div class="request-quote-form">
+          <ContactForm client:only="react" />
+        </div>
+      )
+    }
+  </Wrapper>
+</div>

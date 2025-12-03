@@ -10,3 +10,11 @@ export const Contact_Info_Display_Query = `
         displayContactInfo
     }
 `;
+
+export const Request_Quote_Query = `
+     requestQuote: requestQuoteComponent {
+        title
+        content
+        displayContactForm
+    }
+`;

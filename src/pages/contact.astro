@@ -1,9 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import HeroSmall from "../components/shared/PageComponents/HeroSmall/HeroSmall.astro";
+import Intro from "../components/contact/Intro/Intro.astro";
+import ContactInfo from "../components/contact/ContactInfo/ContactInfo.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
-import { Hero_Small_Query } from "../data/shared/queries";
+import {
+  Hero_Small_Query,
+  Contact_Information_Query,
+} from "../data/shared/queries";
+import {
+  Intro_Query,
+  Contact_Info_Display_Query,
+} from "../data/contact/queries";
 
 const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
   method: "POST",
@@ -18,8 +27,12 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
 
         contactPage {
           ${Hero_Small_Query}
+          ${Intro_Query}
+          ${Contact_Info_Display_Query}
         }
 			}
+
+      ${Contact_Information_Query}
 		}
 	`,
   }),
@@ -28,6 +41,7 @@ const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
 const {
   data: {
     page: { seoMetaTags, contactPage },
+    contactInformation,
   },
 } = await response.json();
 ---
@@ -38,4 +52,10 @@ const {
   metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
 >
   <HeroSmall data={contactPage.heroSmall} />
+  <Intro data={contactPage.intro} />
+  {
+    contactPage.contactInfoDisplay.displayContactInfo && (
+      <ContactInfo data={contactInformation.contactOptions} />
+    )
+  }
 </Layout>

@@ -1,0 +1,25 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
+.intro-contact {
+  &-title {
+    width: 100%;
+
+    h2 {
+      @extend .hl-one;
+      margin-bottom: 1.5rem;
+      color: $secondaryColor;
+      font-weight: 600;
+    }
+  }
+
+  &-content {
+    width: 100%;
+
+    p {
+      @extend .p-two;
+      color: $secondaryColor;
+    }
+  }
+}

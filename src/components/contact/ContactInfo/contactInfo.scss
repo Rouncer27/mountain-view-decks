@@ -1,0 +1,25 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
+.contact-info {
+  padding-bottom: 4rem;
+
+  &-title {
+    width: 100%;
+
+    h2 {
+      @extend .hl-three;
+      margin-top: 0;
+    }
+  }
+
+  &-details {
+    width: 100%;
+
+    p {
+      @extend .p-one;
+      margin: 0;
+    }
+  }
+}

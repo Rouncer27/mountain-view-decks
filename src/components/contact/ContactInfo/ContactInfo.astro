@@ -1,0 +1,22 @@
+---
+// @ts-nocheck
+import Wrapper from "../../shared/Wrapper.astro";
+import "./contactInfo.scss";
+
+const { phoneNumber, hours, mainOfficeAddress } = Astro.props.data;
+---
+
+<div class="contact-info">
+  <Wrapper class="contact-info-wrapper">
+    <div class="contact-info-title">
+      <h2>Conatct Us</h2>
+    </div>
+    <div class="contact-info-details">
+      <p class="contact-info-details-phone">Phone: {phoneNumber}</p>
+      <p class="contact-info-details-hours">Hours: {hours}</p>
+      <p class="contact-info-details-address">
+        Main Office: {mainOfficeAddress}
+      </p>
+    </div>
+  </Wrapper>
+</div>

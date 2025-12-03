@@ -85,3 +85,13 @@ export const Servcies_List_Query = `
         }  
     }
 `;
+
+export const Contact_Information_Query = `
+     contactInformation: siteWideSettings {
+        contactOptions {
+            phoneNumber
+            hours
+            mainOfficeAddress
+        }
+    }
+`;

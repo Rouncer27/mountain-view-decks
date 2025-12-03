@@ -1,0 +1,91 @@
+---
+// @ts-nocheck
+import type { GetStaticPaths } from "astro";
+import Layout from "../../layouts/Layout.astro";
+import HeroSmall from "../../components/shared/PageComponents/HeroSmall/HeroSmall.astro";
+import PostCards from "../../components/newsResources/PostCards/PostCards.astro";
+import Pagination from "../../components/newsResources/Pagination/Pagination.astro";
+
+import { Page_Seo_Query } from "../../data/page/queries";
+import { Hero_Small_Query } from "../../data/shared/queries";
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+  const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      query: `
+        query postsQuery {
+          posts(first: 999999) {
+            edges {
+              node {
+                slug
+                title
+                postFields {
+                  excerpt
+                  featuredImage  {
+                    node {
+                      sourceUrl
+                      altText
+                      mediaDetails {
+                        width
+                        height
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      `,
+    }),
+  });
+
+  const { data } = await response.json();
+  const allposts = data.posts.edges;
+  return paginate(allposts, { pageSize: 3 });
+};
+
+const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
+  method: "POST",
+  headers: {
+    "content-type": "application/json",
+  },
+  body: JSON.stringify({
+    query: `
+		query newsResourcesPageQuery {
+			page(id: "/news-resources", idType: URI) {
+				${Page_Seo_Query}
+        newsResources {
+          ${Hero_Small_Query}
+        }
+			}
+		}
+	`,
+  }),
+});
+
+const {
+  data: {
+    page: { seoMetaTags, newsResources },
+  },
+} = await response.json();
+
+const {
+  page,
+  page: { data: allPosts },
+} = Astro.props;
+---
+
+<Layout
+  metaImg={seoMetaTags.seoMetaInformation.metaImage.sourceUrl}
+  metaTitle={seoMetaTags.seoMetaInformation.metaTitle}
+  metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
+>
+  <HeroSmall data={newsResources.heroSmall} />
+  <PostCards allPosts={allPosts} />
+  <Pagination page={page} />
+</Layout>

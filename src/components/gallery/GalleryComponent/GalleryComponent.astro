@@ -1,0 +1,41 @@
+---
+// @ts-nocheck
+import { Image } from "astro:assets";
+import Wrapper from "../../shared/Wrapper.astro";
+import "./galleryComponent.scss";
+
+const { gallery } = Astro.props.data;
+---
+
+<div class="gallery-project">
+  <Wrapper classes="gallery-project-wrapper">
+    <div class="gallery-project-navigation">
+      <ul><li>CAT NAV</li></ul>
+    </div>
+    {
+      gallery.map((image) => {
+        const imageSrc = image?.image?.node?.sourceUrl;
+        const imageAlt = image?.image?.node?.altText || "";
+        return (
+          <div
+            data-protype={image.projectType}
+            class={`gallery-project-image image-${image.projectType}`}
+          >
+            <div>
+              <Image
+                src={imageSrc}
+                alt={imageAlt}
+                format="webp"
+                widths={[800, 1200, 1600, 2000]}
+                sizes="100vw"
+                loading="eager"
+                inferSize={true}
+                class=""
+              />
+            </div>
+          </div>
+        );
+      })
+    }
+  </Wrapper>
+</div>

@@ -11,13 +11,13 @@ import Wrapper from "../../shared/Wrapper.astro";
           class={`resources-post-nav-prev${Astro.props.data.next === null ? " resources-post-nav-prev-alone" : ""}`}
         >
           <a href={`/news-resources/${Astro.props.data.prev.slug}`}>
-            <span>&lt;</span>Previous
+            <span>&lt;</span>Previous Article
           </a>
         </div>
       ) : null
     }
     <div class="resources-post-nav-home">
-      <a href={`/news-resources`}> Resources </a>
+      <a href={`/news-resources`}> Back To Articles </a>
     </div>
     {
       Astro.props.data.next !== null ? (
@@ -25,7 +25,7 @@ import Wrapper from "../../shared/Wrapper.astro";
           class={`resources-post-nav-next${Astro.props.data.prev === null ? " resources-post-nav-next-alone" : ""}`}
         >
           <a href={`/news-resources/${Astro.props.data.next.slug}`}>
-            Next<span>&gt;</span>
+            Next Article<span>&gt;</span>
           </a>
         </div>
       ) : null

@@ -18,3 +18,32 @@ export const Request_Quote_Query = `
         displayContactForm
     }
 `;
+
+export const Process_Query = `
+   	 process: processComponent {
+        title
+        subTitle
+         logo {
+            node {
+                sourceUrl
+                altText
+                mediaDetails {
+                    width
+                    height
+                }
+            }
+        }
+        processSteps {
+            title
+            content
+        }
+        buttonText
+        buttonLink {
+            edges {
+                node {
+                    uri
+                }
+            }
+        }
+    }
+`;

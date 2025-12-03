@@ -1,0 +1,70 @@
+---
+import { Image } from "astro:assets";
+import Button from "../../shared/Button.astro";
+import Wrapper from "../../shared/Wrapper.astro";
+import "./process.scss";
+
+import iconOne from "../../../assets/one-blue.png";
+import iconTwo from "../../../assets/two-blue.png";
+import iconThree from "../../../assets/three-blue.png";
+
+const { title, subTitle, logo, processSteps, buttonText, buttonLink } =
+  Astro.props.data;
+
+const imageSrc = logo?.node?.sourceUrl;
+const imageAlt = logo?.node?.altText || "";
+---
+
+<section class="process">
+  <Wrapper classes="process-wrapper">
+    <div class="process-title">
+      <h2>{title}</h2>
+      <h3>{subTitle}</h3>
+    </div>
+
+    <div class="process-logo">
+      <Image
+        src={imageSrc}
+        alt={imageAlt}
+        format="webp"
+        widths={[800, 1200, 1600, 2000]}
+        sizes="100vw"
+        loading="eager"
+        inferSize={true}
+        class=""
+      />
+    </div>
+
+    <div class="process-steps">
+      {
+        processSteps.map((step: any, index: any) => {
+          return (
+            <div class="process-steps-step">
+              <div class="process-steps-step-icon">
+                <Image
+                  src={
+                    index === 0 ? iconOne : index === 1 ? iconTwo : iconThree
+                  }
+                  alt={`Step ${index === 0 ? "one" : index === 1 ? "two" : "three"}`}
+                  format="webp"
+                  widths={[800, 1200, 1600, 2000]}
+                  sizes="100vw"
+                  loading="eager"
+                  inferSize={true}
+                  class=""
+                />
+              </div>
+              <div>
+                <h3>{step.title}</h3>
+              </div>
+              <div set:html={step.content} />
+            </div>
+          );
+        })
+      }
+    </div>
+    <div class="process-link">
+      <Button ele="a" href={buttonLink.edges[0].node.uri}>{buttonText}</Button>
+    </div>
+  </Wrapper>
+</section>

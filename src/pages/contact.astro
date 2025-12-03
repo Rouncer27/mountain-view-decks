@@ -5,6 +5,7 @@ import Intro from "../components/contact/Intro/Intro.astro";
 import ContactInfo from "../components/contact/ContactInfo/ContactInfo.astro";
 import RequestQuote from "../components/contact/RequestQuote/RequestQuote.astro";
 import Process from "../components/contact/Process/Process.astro";
+import Testimonials from "../components/shared/PageComponents/Testimonials/Testimonials.astro";
 
 import { Page_Seo_Query } from "../data/page/queries";
 import {
@@ -66,4 +67,5 @@ const {
   }
   <RequestQuote data={contactPage.requestQuote} />
   <Process data={contactPage.process} />
+  <Testimonials />
 </Layout>

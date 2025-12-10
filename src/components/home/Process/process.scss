@@ -50,6 +50,7 @@
       width: calc(100%);
       margin: 0 0.75rem;
       color: $whiteColor;
+      opacity: 0;
 
       @media (min-width: 768px) {
         width: calc((100% / 3) - 1.5rem);

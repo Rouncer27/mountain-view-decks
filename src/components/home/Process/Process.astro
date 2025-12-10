@@ -32,7 +32,7 @@ const imageAlt = logo?.node?.altText || "";
       />
     </div>
 
-    <Steps processSteps={processSteps} client:only="react" />
+    <Steps processSteps={processSteps} client:visible />
     <div class="process-link">
       <Button ele="a" href={buttonLink.edges[0].node.uri}>{buttonText}</Button>
     </div>

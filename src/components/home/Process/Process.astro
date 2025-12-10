@@ -68,3 +68,33 @@ const imageAlt = logo?.node?.altText || "";
     </div>
   </Wrapper>
 </section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  const trigger = document.querySelector(".process-steps");
+  const process = document.querySelectorAll(".process-steps-step");
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: trigger,
+      start: "top 50%",
+      markers: false,
+    },
+  });
+
+  tl.fromTo(
+    process,
+    { autoAlpha: 0, y: 200 },
+    {
+      autoAlpha: 1,
+      y: 0,
+      ease: "power1.out",
+      stagger: {
+        each: 0.5,
+      },
+    },
+  );
+</script>

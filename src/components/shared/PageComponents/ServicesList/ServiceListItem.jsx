@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const ServiceListItem = ({ service, index }) => {
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
     const trigger = document.querySelector(
       `.services-list-service-${index + 1}`,
     );
@@ -45,21 +44,21 @@ const ServiceListItem = ({ service, index }) => {
   }, []);
   return (
     <div
-      class={`services-list-service services-list-service-${index + 1} ${index % 2 === 0 ? "" : "services-list-service-reverse"}`}
+      className={`services-list-service services-list-service-${index + 1} ${index % 2 === 0 ? "" : "services-list-service-reverse"}`}
     >
-      <div class="services-list-service-content">
-        <div class="services-list-service-content-title">
+      <div className="services-list-service-content">
+        <div className="services-list-service-content-title">
           <h2>{service.title}</h2>
         </div>
         <div
-          class="services-list-service-content-excerpt"
+          className="services-list-service-content-excerpt"
           dangerouslySetInnerHTML={{ __html: service.content }}
         />
-        <div class="services-list-service-content-link">
+        <div className="services-list-service-content-link">
           <a href={service.buttonLink.edges[0].node.uri}>Learn More</a>
         </div>
       </div>
-      <div class="services-list-service-image">
+      <div className="services-list-service-image">
         <img
           src={service.image.node.sourceUrl}
           alt={service.image.node.altText}

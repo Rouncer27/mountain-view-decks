@@ -66,3 +66,44 @@ const heroAlt = image?.node?.altText || "";
   </div>
   <div class="hero-intro-overlay"></div>
 </div>
+
+<script>
+  // @ts-nocheck
+  import { gsap } from "gsap";
+  import { SplitText } from "gsap/SplitText";
+  gsap.registerPlugin(SplitText);
+
+  const title = document.querySelectorAll(".hero-intro-content-title h2");
+  const content = document.querySelectorAll(".hero-intro-content-paragraph");
+  const link = document.querySelectorAll(".hero-intro-content-buttons")
+    ? document.querySelectorAll(".hero-intro-content-buttons")
+    : [];
+  const image = document.querySelectorAll(".hero-intro-background img");
+  const mainTitle = new SplitText(title, {
+    type: "words, chars",
+  });
+
+  const allDoneTitle = () => {
+    mainTitle.revert();
+  };
+
+  const tl = gsap.timeline();
+
+  gsap.set(title, { perspective: 400 });
+
+  tl.add("start")
+    .from(mainTitle.chars, {
+      autoAlpha: 0,
+      rotation: -20,
+      x: -10,
+      duration: 0.4,
+      ease: "back.out(1.7)",
+      stagger: {
+        each: 0.02,
+      },
+      onComplete: allDoneTitle,
+    })
+    .from(content, { autoAlpha: 0, y: 100 })
+    .from(link, { autoAlpha: 0, y: 100 })
+    .from(image, { filter: "blur(100px)", duration: 2.2 }, "start");
+</script>

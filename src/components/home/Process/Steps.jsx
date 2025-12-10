@@ -7,7 +7,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const Steps = ({ processSteps }) => {
-  console.log("iconOne", iconOne);
   useEffect(() => {
     const trigger = document.querySelector("#pro-steps");
     const process = document.querySelectorAll(".process-steps-step");

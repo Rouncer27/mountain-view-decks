@@ -9,33 +9,105 @@ const { gallery } = Astro.props.data;
 
 <div class="gallery-project">
   <Wrapper classes="gallery-project-wrapper">
-    <div class="gallery-project-navigation">
-      <ul><li>CAT NAV</li></ul>
-    </div>
-    {
-      gallery.map((image) => {
-        const imageSrc = image?.image?.node?.sourceUrl;
-        const imageAlt = image?.image?.node?.altText || "";
-        return (
-          <div
-            data-protype={image.projectType}
-            class={`gallery-project-image image-${image.projectType}`}
-          >
-            <div>
-              <Image
-                src={imageSrc}
-                alt={imageAlt}
-                format="webp"
-                widths={[800, 1200, 1600, 2000]}
-                sizes="100vw"
-                loading="eager"
-                inferSize={true}
-                class=""
-              />
+    <!-- Navigation / Filter Controls -->
+    <nav class="gallery-project-navigation" aria-label="Gallery Filters">
+      <ul>
+        <li><button data-protype="all" aria-pressed="true">All</button></li>
+        <li><button data-protype="customDecks">Custom Decks</button></li>
+        <li><button data-protype="railing">Railings</button></li>
+        <li><button data-protype="stairs">Stairs</button></li>
+        <li><button data-protype="sunrooms">Sunrooms</button></li>
+        <li><button data-protype="deckRepair">Deck Repair</button></li>
+      </ul>
+    </nav>
+
+    <!-- Gallery Images -->
+    <div class="gallery-project-grid">
+      {
+        gallery.map((image) => {
+          const imageSrc = image?.image?.node?.sourceUrl;
+          const imageAlt = image?.image?.node?.altText || "";
+          const types = Array.isArray(image.projectType)
+            ? image.projectType.join(",")
+            : image.projectType;
+
+          return (
+            <div data-protype={types} class="gallery-project-image">
+              <div>
+                <Image
+                  src={imageSrc}
+                  alt={imageAlt}
+                  format="webp"
+                  widths={[800, 1200, 1600, 2000]}
+                  sizes="100vw"
+                  loading="eager"
+                  inferSize={true}
+                />
+              </div>
             </div>
-          </div>
-        );
-      })
-    }
+          );
+        })
+      }
+    </div>
   </Wrapper>
 </div>
+
+<!-- Filtering Script -->
+<script>
+  // @ts-nocheck
+  import { gsap } from "gsap";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll(
+      ".gallery-project-navigation button",
+    );
+    const images = document.querySelectorAll(".gallery-project-image");
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const filter = btn.dataset.protype;
+
+        // Update ARIA
+        buttons.forEach((b) => b.setAttribute("aria-pressed", "false"));
+        btn.setAttribute("aria-pressed", "true");
+
+        images.forEach((img) => {
+          const imgTypes = img.dataset.protype.split(",");
+          const shouldShow = filter === "all" || imgTypes.includes(filter);
+
+          if (shouldShow) {
+            // --- FADE IN (restore layout first)
+            img.style.position = "";
+            img.style.visibility = "visible";
+
+            gsap.to(img, {
+              opacity: 1,
+              duration: 0.4,
+              ease: "power2.out",
+              onStart: () => {
+                img.style.display = "";
+              },
+            });
+          } else {
+            // --- FADE OUT (but keep the element in the flow during fade)
+            img.style.position = "relative"; // stays in layout
+            img.style.visibility = "visible"; // still visible during fade
+
+            gsap.to(img, {
+              opacity: 0,
+              duration: 0.4,
+              ease: "power2.out",
+              onComplete: () => {
+                img.style.visibility = "hidden";
+
+                // Now remove from layout AFTER fade completes
+                img.style.display = "none";
+                img.style.position = "";
+              },
+            });
+          }
+        });
+      });
+    });
+  });
+</script>

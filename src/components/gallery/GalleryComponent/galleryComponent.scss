@@ -1,14 +1,60 @@
+@use "../../../styles/abstracts/" as *;
+@use "../../../styles/global/headlines";
+@use "../../../styles/global/paragraphs";
+
 .gallery-project {
   &-navigation {
     width: 100%;
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      margin: 2rem auto;
+
+      li {
+        @extend .p-one;
+        margin: 0.5rem 2rem;
+        font-weight: 600;
+
+        button {
+          @extend .p-one;
+          background-color: transparent;
+          border: none;
+          font-weight: 600;
+          cursor: pointer;
+        }
+      }
+    }
   }
+
+  &-grid {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
   &-image {
     width: 100%;
     margin: 1rem auto;
+    opacity: 1;
+    transform: translateY(0);
+    will-change: opacity, transform;
 
     @media (min-width: 768px) {
       width: calc((100% / 3) - 1rem);
-      margin: 1rem 0.5rem;
+      margin: 0.5rem 0.5rem;
+    }
+
+    &.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    div {
+      width: 100%;
     }
   }
 }

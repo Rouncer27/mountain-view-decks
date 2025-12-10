@@ -11,16 +11,30 @@
   }
 
   &-image {
-    width: calc(25%);
+    width: calc(100%);
     text-align: center;
 
+    @media (min-width: 768px) {
+      width: calc(25%);
+    }
+
     &-container {
+      max-width: 25rem;
+      margin: auto;
       margin-bottom: 3.5rem;
+
+      @media (min-width: 768px) {
+        max-width: 100%;
+        margin: 0;
+        margin-bottom: 3.5rem;
+      }
     }
   }
 
   &-main {
-    width: calc(75% - 5rem);
-    margin-left: 5rem;
+    @media (min-width: 768px) {
+      width: calc(75% - 5rem);
+      margin-left: 5rem;
+    }
   }
 }

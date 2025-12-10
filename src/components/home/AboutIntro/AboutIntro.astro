@@ -2,6 +2,7 @@
 // @ts-nocheck
 import Button from "../../shared/Button.astro";
 import Wrapper from "../../shared/Wrapper.astro";
+import StatsCounter from "./StatsCounter";
 import "./aboutIntro.scss";
 
 import { Image } from "astro:assets";
@@ -36,16 +37,7 @@ const imageTallAlt = imageTall?.node?.altText || "";
       </div>
       <div class="about-intro-content-intro" set:html={content} />
       <div class="about-intro-content-stats">
-        {
-          stats.map((stat) => {
-            return (
-              <div class="about-intro-content-stats-stat">
-                <p>{stat.number}</p>
-                <p>{stat.stat}</p>
-              </div>
-            );
-          })
-        }
+        <StatsCounter stats={stats} client:load />
       </div>
       <div class="about-intro-content-link">
         <Button ele="a" href={buttonLink.edges[0].node.uri}>{buttonText}</Button

@@ -4,6 +4,9 @@ import { Image } from "astro:assets";
 import Wrapper from "../../shared/Wrapper.astro";
 import "./types.scss";
 
+// ADD THIS
+import ReadMore from "./ReadMore.jsx";
+
 const { title, types } = Astro.props.data;
 ---
 
@@ -40,7 +43,12 @@ const { title, types } = Astro.props.data;
                 <div class="types-container-type-content-bold">
                   <p>{type.title}</p>
                 </div>
-                <div set:html={type.content} />
+                <ReadMore
+                  client:load
+                  html={type.content}
+                  title={type.title}
+                  limit={150}
+                />
               </div>
             </div>
           );

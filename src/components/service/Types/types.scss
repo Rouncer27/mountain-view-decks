@@ -1,6 +1,7 @@
 @use "../../../styles/abstracts/" as *;
 @use "../../../styles/global/headlines";
 @use "../../../styles/global/paragraphs";
+@use "../../../styles/global/buttons";
 
 .types {
   background-color: #efebe5;
@@ -70,6 +71,13 @@
           @extend .p-two;
         }
 
+        button {
+          @extend .btn-one;
+          display: block;
+          margin-top: 2.5rem;
+          margin-bottom: 2.5rem;
+        }
+
         &-bold {
           width: 100%;
           padding: 2.75rem 0;
@@ -79,6 +87,37 @@
             font-weight: 600;
           }
         }
+      }
+    }
+  }
+
+  .readmore-modal-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 9999;
+
+    .readmore-modal {
+      background: #fff;
+      padding: 2rem;
+      width: 90%;
+      max-width: 65rem;
+      max-height: 80vh;
+      overflow-y: auto;
+
+      h3 {
+        @extend .hl-three;
+      }
+
+      p {
+        @extend .p-three;
+      }
+
+      button {
+        @extend .btn-one;
       }
     }
   }

@@ -23,7 +23,7 @@ export default function ReadMore({ html, title, limit = 150 }) {
   return (
     <>
       <div>
-        {shortText}
+        <div className="read-more-intro">{shortText}</div>
         {isLong && <button onClick={() => setOpen(true)}>Read more</button>}
       </div>
 

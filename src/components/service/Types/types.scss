@@ -91,6 +91,10 @@
     }
   }
 
+  .read-more-intro {
+    @extend .p-two;
+  }
+
   .readmore-modal-overlay {
     display: flex;
     justify-content: center;

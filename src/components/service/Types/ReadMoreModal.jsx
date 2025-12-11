@@ -13,9 +13,7 @@ export default function ReadMoreModal({ isOpen, onClose, contentHtml, title }) {
     <div className="readmore-modal-overlay" onClick={onClose}>
       <div className="readmore-modal" onClick={(e) => e.stopPropagation()}>
         <h3>{title}</h3>
-
         <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
-
         <button onClick={onClose}>Close</button>
       </div>
     </div>

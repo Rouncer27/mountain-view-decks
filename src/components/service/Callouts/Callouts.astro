@@ -6,7 +6,7 @@ import "./callouts.scss";
 const { callouts } = Astro.props.data;
 ---
 
-<section class="callouts">
+<section id="callout-section" class="callouts">
   <Wrapper classes="callouts-wrapper">
     {
       callouts.map((callout) => {
@@ -21,3 +21,32 @@ const { callouts } = Astro.props.data;
     }
   </Wrapper>
 </section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  const trigger = document.querySelector("#callout-section");
+  const callout = document.querySelectorAll(".callouts-callout");
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: trigger,
+      start: "top 50%",
+      markers: false,
+    },
+  });
+
+  tl.fromTo(
+    callout,
+    { autoAlpha: 0, y: 200 },
+    {
+      autoAlpha: 1,
+      y: 0,
+      ease: "power1.out",
+      stagger: {
+        each: 0.5,
+      },
+    },
+  );
+</script>

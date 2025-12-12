@@ -10,7 +10,7 @@ const imageSrc = image?.node?.sourceUrl;
 const imageAlt = image?.node?.altText || "";
 ---
 
-<section class="image-content">
+<section id="img-content-section" class="image-content">
   <Wrapper classes="image-content-wrapper">
     <div class="image-content-image">
       <div class="image-content-image-container">
@@ -38,3 +38,38 @@ const imageAlt = image?.node?.altText || "";
     </div>
   </Wrapper>
 </section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  const trigger = document.querySelector("#img-content-section");
+  const image = document.querySelector(".image-content-image");
+  const content = document.querySelector(".image-content-main");
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: trigger,
+      start: "top 50%",
+      markers: false,
+    },
+  });
+
+  tl.fromTo(
+    image,
+    { autoAlpha: 0, x: -200 },
+    {
+      autoAlpha: 1,
+      x: 0,
+      ease: "power1.out",
+    },
+  ).fromTo(
+    content,
+    { autoAlpha: 0, x: 200 },
+    {
+      autoAlpha: 1,
+      x: 0,
+      ease: "power1.out",
+    },
+  );
+</script>

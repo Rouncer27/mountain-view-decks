@@ -9,8 +9,12 @@
   }
 
   &-title {
-    width: calc(70% - 3.5rem);
-    margin-left: 3.5rem;
+    width: calc(100%);
+
+    @media (min-width: 768px) {
+      width: calc(70% - 3.5rem);
+      margin-left: 3.5rem;
+    }
 
     h1 {
       @extend .hl-two;
@@ -21,8 +25,15 @@
 
   &-image {
     position: relative;
-    width: calc(30%);
-    height: 20vw;
+    width: calc(100%);
+    height: 25rem;
+    margin-top: 2.5rem;
+
+    @media (min-width: 768px) {
+      width: calc(30%);
+      height: 20vw;
+      margin-top: 0;
+    }
 
     &-container {
       position: absolute;

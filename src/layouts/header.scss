@@ -61,9 +61,11 @@
     margin-bottom: 2.5rem;
     overflow: hidden;
     z-index: 101;
+    opacity: 0.5;
 
     @media (min-width: 1025px) {
       width: 18rem;
+      opacity: 1;
     }
 
     @media (min-width: 1150px) {

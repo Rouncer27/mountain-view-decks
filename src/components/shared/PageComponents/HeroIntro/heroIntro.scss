@@ -51,6 +51,16 @@
         color: $whiteColor;
       }
     }
+
+    &-buttons {
+      a:first-of-type {
+        margin-bottom: 2.5rem;
+
+        @media (min-width: 768px) {
+          margin-bottom: 0;
+        }
+      }
+    }
   }
 
   &-background {

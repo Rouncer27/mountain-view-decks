@@ -20,13 +20,33 @@
   }
 
   &-logo {
-    width: calc(8%);
+    width: calc(100%);
+    margin-bottom: 2.5rem;
+
+    img {
+      max-width: 20rem;
+
+      @media (min-width: 768px) {
+        max-width: 100%;
+      }
+    }
+
+    @media (min-width: 768px) {
+      width: calc(8%);
+      padding: 0;
+    }
   }
 
   &-contact {
-    width: calc(15%);
+    width: calc(100%);
+    margin-bottom: 2.5rem;
     padding: 0 1rem;
     text-align: center;
+
+    @media (min-width: 768px) {
+      width: calc(15%);
+      margin-bottom: 0;
+    }
 
     p {
       @extend .p-three;
@@ -45,10 +65,20 @@
   }
 
   &-social {
-    width: calc(12.5%);
+    width: calc(100%);
+    margin-bottom: 2.5rem;
+
+    @media (min-width: 768px) {
+      width: calc(12.5%);
+      margin-bottom: 0;
+    }
   }
 
   &-nav {
-    width: calc(64.5%);
+    width: calc(100%);
+
+    @media (min-width: 768px) {
+      width: calc(64.5%);
+    }
   }
 }

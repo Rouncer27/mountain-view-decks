@@ -1,0 +1,44 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroSmall from "../components/shared/PageComponents/HeroSmall/HeroSmall.astro";
+import MainContent from "../components/privacyPolicy/MainContent/MainContent.astro";
+
+import { Page_Seo_Query } from "../data/page/queries";
+import { Hero_Small_Query } from "../data/shared/queries";
+import { Main_Content_Query } from "../data/privacyPolicy/queries";
+
+const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
+  method: "POST",
+  headers: {
+    "content-type": "application/json",
+  },
+  body: JSON.stringify({
+    query: `
+		query privacyPageQuery {
+			page(id: "/privacy-policy", idType: URI) {
+				${Page_Seo_Query}
+				privacyPolicy {
+                    ${Hero_Small_Query}
+					${Main_Content_Query}
+				}
+			}
+		}
+	`,
+  }),
+});
+
+const {
+  data: {
+    page: { seoMetaTags, privacyPolicy },
+  },
+} = await response.json();
+---
+
+<Layout
+  metaImg={seoMetaTags.seoMetaInformation.metaImage.sourceUrl}
+  metaTitle={seoMetaTags.seoMetaInformation.metaTitle}
+  metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
+>
+  <HeroSmall data={privacyPolicy.heroSmall} />
+  <MainContent data={privacyPolicy.mainContent} />
+</Layout>

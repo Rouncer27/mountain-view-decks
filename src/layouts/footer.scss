@@ -81,4 +81,18 @@
       width: calc(64.5%);
     }
   }
+
+  &-policy {
+    width: calc(100%);
+    text-align: center;
+
+    a {
+      @extend .p-three;
+      color: $whiteColor;
+
+      &:hover {
+        color: $accentColor;
+      }
+    }
+  }
 }

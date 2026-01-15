@@ -6,7 +6,7 @@ import "./articleBody.scss";
 const { article } = Astro.props;
 ---
 
-<article>
+<article class="main-article-body">
   <Wrapper wrapType="stand">
     <Wysiwyg>
       <div set:html={article} />

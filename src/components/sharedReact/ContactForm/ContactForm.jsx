@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import handleErrorModalClose from "./functions/handleErrorModalClose.js";
 import handleSuccessModalClose from "./functions/handleSuccessModalClose.js";
@@ -12,9 +12,17 @@ import SuccessModal from "./Modals/SuccessModal";
 import Input from "./Components/Input/Input.jsx";
 import Textarea from "./Components/Textarea/Textarea.jsx";
 
+// ✅ reCAPTCHA
+import ReCAPTCHA from "react-google-recaptcha";
+
 import "./contactForm.scss";
 
 const ContactForm = () => {
+  // ✅ reCAPTCHA
+  const recaptchaRef = useRef(null);
+  // ✅ reCAPTCHA
+  const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -23,6 +31,7 @@ const ContactForm = () => {
     comments: "",
     _wpcf7_unit_tag: "wpcf7-f546-948",
   });
+
   const [formStatus, setFormStatus] = useState({
     submitting: false,
     errorWarnDisplay: false,
@@ -34,13 +43,34 @@ const ContactForm = () => {
     errors: [],
   });
 
+  // ✅ reCAPTCHA
+  const onChangeRecaptcha = (value) => {
+    setIsCaptchaVerified(!!value);
+
+    setFormStatus((prev) => ({
+      ...prev,
+      captachError: false,
+    }));
+  };
+
   return (
     <div className="contact-form">
       <form
         className="contact-form-fields"
-        onSubmit={(event) =>
-          submitForm(event, setFormStatus, formStatus, setFormData, formData)
-        }
+        onSubmit={(event) => {
+          event.preventDefault();
+          // ✅ reCAPTCHA
+          const recaptchaValue = recaptchaRef.current.getValue();
+          // ✅ reCAPTCHA
+          if (recaptchaValue === "") {
+            setFormStatus({
+              ...formStatus,
+              captachError: true,
+            });
+            return;
+          }
+          submitForm(event, setFormStatus, formStatus, setFormData, formData);
+        }}
       >
         <fieldset>
           <Input
@@ -107,8 +137,27 @@ const ContactForm = () => {
             )}
           />
         </fieldset>
+        {/*  ✅ reCAPTCHA */}
+        <div className="captcha-container">
+          {formStatus.captachError && (
+            <p>The form will not submit until you have checked the reCAPCHA.</p>
+          )}
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            sitekey={`6Ld_E00sAAAAAD1Cw3duhnlL24ShZTJi4Xa9FrF6`}
+            onChange={onChangeRecaptcha}
+            onExpired={() => setIsCaptchaVerified(false)}
+          />
+        </div>
+        {/*  ✅ reCAPTCHA */}
+
         <div className="contact-form-fields-button">
-          <button type="submit">Send Message</button>
+          <button
+            disabled={!isCaptchaVerified || formStatus.submitting}
+            type="submit"
+          >
+            Send Message
+          </button>
         </div>
       </form>
       {formStatus.submitting && <SubmitModal />}

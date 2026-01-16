@@ -33,6 +33,7 @@ const submitForm = async (
           },
         },
       ],
+      captachError: false,
     });
   }, 10000);
 
@@ -70,11 +71,11 @@ const submitForm = async (
         submitting: false,
         errorWarnDisplay: false,
         success: true,
-        captachError: false,
         validationFailedError: false,
         timeOutError: false,
         unknownError: false,
         errors: [],
+        captachError: false,
       });
       clearFormFields(setFormData);
     } else if (response.data.status === "validation_failed") {
@@ -88,6 +89,7 @@ const submitForm = async (
         timeOutError: false,
         unknownError: false,
         errors: response.data.invalid_fields,
+        captachError: false,
       });
     } else {
       clearTimeout(timeoutID);
@@ -107,6 +109,7 @@ const submitForm = async (
       timeOutError: false,
       unknownError: true,
       errors: [{ unknownErrorMessage: error }],
+      captachError: false,
     });
   }
 };

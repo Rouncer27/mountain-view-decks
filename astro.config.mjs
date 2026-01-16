@@ -10,7 +10,7 @@ export default defineConfig({
       devSourcemap: true, // ✅ Enables CSS/SCSS source maps for better debugging
     },
   },
-
+  site: "https://mountainviewsundecks.com/",
   integrations: [react(), sitemap()],
   image: {
     domains: ["mountainview.swbdatabases2.ca/"],

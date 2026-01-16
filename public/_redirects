@@ -1,0 +1,49 @@
+
+
+
+/home  /
+/home/ /
+
+/about-us/ /about
+/our-quality/ /about
+
+/contact-us/ /contact
+/project-portfolio/ /gallery/
+
+/service/exterior-railings/ /services/railing
+/service/aluminum-railings/ /services/railing
+/service/glass-railings/ /services/railing
+/service/glass-privacy-walls/ /services/railing
+/service/picket-railings/ /services/railing
+/service/wood-railings/ /services/railing
+/service/outdoor-railings/ /services/railing
+
+/service/vinyl-decks/ /services/custom-decks
+/service/pvc-decks/ /services/custom-decks/
+/service/pressure-treated-decks/ /services/custom-decks/
+/service/composite-decks/ /services/custom-decks/
+/service/cedar-decks/ /services/custom-decks/
+/service/pergolas/ /services/custom-decks/
+/service/deck-design/ /services/custom-decks/
+
+/service/deck-repair/ /services/deck-repair
+
+/service/stairs/ /services/stairs/
+/service/exterior-stairs/ /services/stairs/
+/service/deck-stairs/ /services/stairs/
+/service/custom-stairs/ /services/stairs/
+
+/service/sun-rooms/ /services/sunroom/
+/service/screen-rooms/ /services/sunroom/
+
+/deck-design-process/ /services
+/benefits-of-vinyl-decks/ /services
+/vinyl-deck-membrane-repair-replacement/ /services
+/advantages-of-aluminum-railings/ /services
+/aluminum-railing-maintenance/ /services
+/comparing-aluminum-railing/ /services
+/cleaning-glass-railings/ /services
+
+
+/blog/ /news-resources/
+/category/* /news-resources/

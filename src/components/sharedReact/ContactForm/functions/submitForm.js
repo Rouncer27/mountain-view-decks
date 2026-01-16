@@ -6,6 +6,8 @@ const submitForm = async (
   formStatus,
   setFormData,
   formData,
+  recaptchaRef,
+  setIsCaptchaVerified,
 ) => {
   event.preventDefault();
 
@@ -78,6 +80,9 @@ const submitForm = async (
         captachError: false,
       });
       clearFormFields(setFormData);
+      // ✅ Reset reCAPTCHA
+      recaptchaRef.current?.reset();
+      setIsCaptchaVerified(false);
     } else if (response.data.status === "validation_failed") {
       clearTimeout(timeoutID);
       setFormStatus({
@@ -91,6 +96,9 @@ const submitForm = async (
         errors: response.data.invalid_fields,
         captachError: false,
       });
+      // ✅ Reset reCAPTCHA
+      recaptchaRef.current?.reset();
+      setIsCaptchaVerified(false);
     } else {
       clearTimeout(timeoutID);
       throw new Error(
@@ -111,6 +119,9 @@ const submitForm = async (
       errors: [{ unknownErrorMessage: error }],
       captachError: false,
     });
+    // ✅ Reset reCAPTCHA
+    recaptchaRef.current?.reset();
+    setIsCaptchaVerified(false);
   }
 };
 

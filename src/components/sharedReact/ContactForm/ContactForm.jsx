@@ -69,7 +69,15 @@ const ContactForm = () => {
             });
             return;
           }
-          submitForm(event, setFormStatus, formStatus, setFormData, formData);
+          submitForm(
+            event,
+            setFormStatus,
+            formStatus,
+            setFormData,
+            formData,
+            recaptchaRef,
+            setIsCaptchaVerified,
+          );
         }}
       >
         <fieldset>

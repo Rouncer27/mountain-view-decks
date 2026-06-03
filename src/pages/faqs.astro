@@ -1,0 +1,48 @@
+---
+// @ts-nocheck
+import Layout from "../layouts/Layout.astro";
+import HeroSmall from "../components/shared/PageComponents/HeroSmall/HeroSmall.astro";
+import PageIntro from "../components/faqs/pageIntro/PageIntro.astro";
+import FaqsList from "../components/faqs/FaqsList/FaqsList.astro";
+
+import { Page_Seo_Query } from "../data/page/queries";
+import { Hero_Small_Query } from "../data/shared/queries";
+import { Page_Intro_Query, Faqs_QA_Query } from "../data/faqs/queries";
+
+const response = await fetch(`${import.meta.env.WPGRAPHQL_URL}`, {
+  method: "POST",
+  headers: {
+    "content-type": "application/json",
+  },
+  body: JSON.stringify({
+    query: `
+		query faqsPageQuery {
+			page(id: "/faqs", idType: URI) {
+				${Page_Seo_Query}
+                faqsPage {
+                    ${Hero_Small_Query}
+                    ${Page_Intro_Query}
+                    ${Faqs_QA_Query}
+                }
+			}
+		}
+	`,
+  }),
+});
+
+const {
+  data: {
+    page: { seoMetaTags, faqsPage },
+  },
+} = await response.json();
+---
+
+<Layout
+  metaImg={seoMetaTags.seoMetaInformation.metaImage.sourceUrl}
+  metaTitle={seoMetaTags.seoMetaInformation.metaTitle}
+  metaDescription={seoMetaTags.seoMetaInformation.metaDescription}
+>
+  <HeroSmall data={faqsPage.heroSmall} />
+  <PageIntro data={faqsPage.pageIntro} />
+  <FaqsList data={faqsPage.faqsQA} />
+</Layout>

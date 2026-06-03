@@ -1,0 +1,46 @@
+---
+import Wysiwyg from "../../shared/Wysiwyg.astro";
+
+// @ts-nocheck
+const { question, answer, index } = Astro.props;
+---
+
+<div data-category={`category-${index + 1}`} class="faqs-section-faqsqa">
+  <!-- 🔵 Make the category title clickable -->
+  <div class="faqs-section-faqsqa-question" role="button" tabindex="0">
+    <h3>{question}</h3>
+    <span class="faq-category-toggle-icon">+</span>
+  </div>
+
+  <!-- 🔵 Wrap the question list for toggling -->
+  <div class="faqs-section-faqsqa-answer">
+    <Wysiwyg classes="faqs-section-faqsqa-answer-wysiwyg">
+      <div set:html={answer} />
+    </Wysiwyg>
+  </div>
+</div>
+
+<!-- 🔵 Category-level accordion toggle script -->
+<script>
+  // @ts-nocheck
+  document.addEventListener("DOMContentLoaded", () => {
+    const categories = document.querySelectorAll(".faqs-section-faqsqa");
+
+    categories.forEach((cat) => {
+      const title = cat.querySelector(".faqs-section-faqsqa-question");
+      const content = cat.querySelector(".faqs-section-faqsqa-answer");
+      const icon = cat.querySelector(".faq-category-toggle-icon");
+
+      // Initial collapsed state
+      content.style.maxHeight = "0px";
+      content.style.overflow = "hidden";
+      content.style.transition = "max-height 0.4s ease";
+
+      title.addEventListener("click", () => {
+        const isOpen = cat.classList.toggle("open");
+        content.style.maxHeight = isOpen ? content.scrollHeight + "px" : "0px";
+        if (icon) icon.textContent = isOpen ? "-" : "+";
+      });
+    });
+  });
+</script>

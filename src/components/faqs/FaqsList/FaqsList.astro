@@ -1,0 +1,64 @@
+---
+// @ts-nocheck
+import "./faqs.scss";
+import Wrapper from "../../shared/Wrapper.astro";
+import Section from "./Section.astro";
+import Headline from "../../shared/Headline.astro";
+import QuestionAnswer from "./QuestionAnswer.astro";
+
+const { sections } = Astro.props.data;
+const faqs = [];
+
+sections.forEach((sec) => {
+  faqs.push(...sec.questions);
+});
+
+// 1️⃣ Server-safe function to strip HTML
+const stripHtml = (html) => html.replace(/<[^>]+>/g, "").trim();
+
+// 2️⃣ JSON-LD Schema for FAQ
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: stripHtml(faq.answer),
+    },
+  })),
+};
+
+// 3️⃣ Stringify JSON-LD
+const jsonLd = JSON.stringify(faqSchema, null, 2);
+---
+
+<div class="faqs">
+  <Wrapper classes="faqs-wrapper">
+    {
+      sections &&
+        sections.map((section, index) => (
+          <div data-section={`section-${index + 1}`} class="faqs-section">
+            <div class="faqs-section-title">
+              <Headline ele="h3" hlstyle="four">
+                {section.sectionTitle}
+              </Headline>
+            </div>
+
+            {section.questions &&
+              section.questions.map((question, index) => (
+                <QuestionAnswer
+                  question={question.question}
+                  answer={question.answer}
+                  index={index}
+                />
+              ))}
+          </div>
+        ))
+    }
+  </Wrapper>
+</div>
+
+<!-- 4️⃣ Inline JSON-LD Schema -->
+<script type="application/ld+json" is:inline set:html={jsonLd} />
